@@ -23,6 +23,40 @@
 
                     <Border Grid.Row="1"
                             StrokeShape="RoundRectangle 10">
+
+                        <Grid RowDefinitions="*,*,*"
+                              ColumnDefinitions="*,*"
+                              Margin="15">
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="0"
+                                   Text="Pair"
+                                   VerticalOptions="Center"/>
+                            <Border Grid.Row="0"
+                                    Grid.Column="1">
+                                <Entry/>
+                            </Border>
+
+                            <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   Text="Type"
+                                   VerticalOptions="Center"/>
+
+                            <Border Grid.Row="1"
+                                    Grid.Column="1">
+                                <Entry/>
+                            </Border>
+
+                            <Label Grid.Row="2"
+                                   Grid.Column="0"
+                                   Text="Market Price"
+                                   VerticalOptions="Center"/>
+                            <Border Grid.Row="2"
+                                    Grid.Column="1">
+                                <Entry/>
+                            </Border>
+
+                        </Grid>
                         <!--Fields-->
                     </Border>
                 </Grid>
@@ -37,7 +71,39 @@
 
                     <Border Grid.Row="1"
                             StrokeShape="RoundRectangle 10">
+                        <Grid RowDefinitions="*,*,*"
+                              ColumnDefinitions="*,*"
+                              Margin="15">
 
+                            <Label Grid.Row="0"
+                                   Grid.Column="0"
+                                   Text="Account Balance"
+                                   VerticalOptions="Center"/>
+                            <Border Grid.Row="0"
+                                    Grid.Column="1">
+                                <Entry/>
+                            </Border>
+
+                            <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   Text="Risk %"
+                                   VerticalOptions="Center"/>
+
+                            <Border Grid.Row="1"
+                                    Grid.Column="1">
+                                <Entry/>
+                            </Border>
+
+                            <Label Grid.Row="2"
+                                   Grid.Column="0"
+                                   Text="StopLoss (Pips)"
+                                   VerticalOptions="Center"/>
+                            <Border Grid.Row="2"
+                                    Grid.Column="1">
+                                <Entry/>
+                            </Border>
+
+                        </Grid>
                     </Border>
                 </Grid>
             </Border>
@@ -45,7 +111,7 @@
             <!--Calculate-->
             <Border Grid.Row="2">
                 <Button Text="Calculate"
-                        HeightRequest="70"
+                        HeightRequest="40"
                         WidthRequest="100"/>
             </Border>
 
