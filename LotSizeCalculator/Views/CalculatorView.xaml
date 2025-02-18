@@ -8,21 +8,45 @@
              Title="Lot Size Calcuator">
 
     <Border Margin="30"
-            Stroke="Black"
+            Stroke="Transparent"
             StrokeShape="RoundRectangle 10,10,10,10">
 
-        <Grid RowDefinitions="*,*,*">
+        <Grid RowDefinitions="*,*,*"
+              RowSpacing="10">
 
             <!--Trade Details-->
-            <Border Grid.Row="0">
+            <Border Grid.Row="0"
+                    Stroke="Transparent">
+                <Grid RowDefinitions="0.2*,*">
+                    <Label Text="Trade Details"
+                           Grid.Row="0"/>
+
+                    <Border Grid.Row="1"
+                            StrokeShape="RoundRectangle 10">
+                        <!--Fields-->
+                    </Border>
+                </Grid>
             </Border>
 
             <!--Risk Management-->
-            <Border Grid.Row="1">
+            <Border Grid.Row="1"
+                    Stroke="Transparent">
+                <Grid RowDefinitions="0.2*,*">
+                    <Label Grid.Row="0"
+                           Text="Risk Management"/>
+
+                    <Border Grid.Row="1"
+                            StrokeShape="RoundRectangle 10">
+
+                    </Border>
+                </Grid>
             </Border>
 
             <!--Calculate-->
             <Border Grid.Row="2">
+                <Button Text="Calculate"
+                        HeightRequest="70"
+                        WidthRequest="100"/>
             </Border>
 
         </Grid>
