@@ -3,16 +3,9 @@
     x:Class="LotSizeCalculator.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:LotSizeCalculator">
+    xmlns:local="clr-namespace:LotSizeCalculator.Views">
 
-    <TabBar>
-        <Tab Title="Lot Size Calculator">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
-        </Tab>
+    <ShellContent ContentTemplate="{DataTemplate local:CalculatorView}"/>
 
-        <Tab Title="About">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
-        </Tab>
-    </TabBar>
 
 </Shell>
