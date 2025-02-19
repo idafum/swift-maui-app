@@ -35,8 +35,12 @@
                             <Border Grid.Row="0"
                                     Grid.Column="1">
                                 <Picker Title="Select a Pair">
-
-
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>EURUSD</x:String>
+                                            <x:String>GBPUSD</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
                                 </Picker>
                             </Border>
 
@@ -84,7 +88,30 @@
                                    VerticalOptions="Center"/>
                             <Border Grid.Row="0"
                                     Grid.Column="1">
-                                <Entry/>
+                                <Grid ColumnDefinitions="0.4*,*">
+
+                                    <!-- Picker for Trading Currency -->
+                                    <Picker Title="C"
+                                            Grid.Column="0">
+                                        <Picker.ItemsSource>
+                                            <x:Array Type="{x:Type x:String}">
+                                                <x:String>EURUSD</x:String>
+                                                <x:String>GBPUSD</x:String>
+                                            </x:Array>
+                                        </Picker.ItemsSource>
+                                    </Picker>
+
+                                    <!-- Balance -->
+                                    <HorizontalStackLayout Grid.Column="1">
+                                        <Label Text="$"
+                                               VerticalOptions="Center"/>
+                                        <Entry Text="1000"
+                                               VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+
+
+                                </Grid>
+
                             </Border>
 
                             <Label Grid.Row="1"
