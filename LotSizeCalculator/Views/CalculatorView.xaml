@@ -34,7 +34,10 @@
                                    VerticalOptions="Center"/>
                             <Border Grid.Row="0"
                                     Grid.Column="1">
-                                <Entry/>
+                                <Picker Title="Select a Pair">
+
+
+                                </Picker>
                             </Border>
 
                             <Label Grid.Row="1"
