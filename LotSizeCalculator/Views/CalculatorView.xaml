@@ -5,6 +5,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LotSizeCalculator.Views.CalculatorView"
+             xmlns:viewmodel="clr-namespace:LotSizeCalculator.ViewModels"
+             x:DataType="viewmodel:CalculatorViewModel"
              Title="Lot Size Calcuator">
 
     <Border Margin="30"
@@ -92,15 +94,10 @@
                                       ColumnSpacing="5">
 
                                     <!-- Picker for Trading Currency -->
-                                    <Picker Title="C"
-                                            Grid.Column="0">
-                                        <Picker.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>EURUSD</x:String>
-                                                <x:String>GBPUSD</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
+                                    <Picker Title="Choose Currency"
+                                            Grid.Column="0"
+                                            ItemsSource="{Binding Currencies}"
+                                            ItemDisplayBinding="{Binding Code}"/>
 
                                     <!-- Balance -->
                                     <HorizontalStackLayout Grid.Column="1">
