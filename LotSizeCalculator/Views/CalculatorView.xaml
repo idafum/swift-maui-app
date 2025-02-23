@@ -5,7 +5,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LotSizeCalculator.Views.CalculatorView"
-             Title="Lot Size Calcuator">
+             xmlns:model="clr-namespace:LotSizeCalculator.Models"
+             xmlns:viewmodel="clr-namespace:LotSizeCalculator.ViewModels"
+             x:DataType="viewmodel:CalculatorViewModel"
+             Title="Lot Size Calcuator"
+             HideSoftInputOnTapped="True">
 
     <Border Margin="30"
             Stroke="Transparent"
@@ -35,8 +39,12 @@
                             <Border Grid.Row="0"
                                     Grid.Column="1">
                                 <Picker Title="Select a Pair">
-
-
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>EURUSD</x:String>
+                                            <x:String>GBPUSD</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
                                 </Picker>
                             </Border>
 
@@ -68,44 +76,107 @@
             <!--Risk Management-->
             <Border Grid.Row="1"
                     Stroke="Transparent">
+
                 <Grid RowDefinitions="0.2*,*">
+
+                    <!--Section Heading-->
                     <Label Grid.Row="0"
                            Text="Risk Management"/>
 
+                    <!--Section Border 1-->
                     <Border Grid.Row="1"
                             StrokeShape="RoundRectangle 10">
-                        <Grid RowDefinitions="*,*,*"
-                              ColumnDefinitions="*,*"
+
+                        <Grid RowDefinitions="*,*,*,*"
+                              ColumnDefinitions="0.6*,*"
                               Margin="15">
 
                             <Label Grid.Row="0"
                                    Grid.Column="0"
-                                   Text="Account Balance"
+                                   Text="Currency"
                                    VerticalOptions="Center"/>
-                            <Border Grid.Row="0"
-                                    Grid.Column="1">
-                                <Entry/>
-                            </Border>
 
                             <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   Text="Account Balance"
+                                   VerticalOptions="Center"/>
+
+                            <Label Grid.Row="2"
                                    Grid.Column="0"
                                    Text="Risk %"
                                    VerticalOptions="Center"/>
 
-                            <Border Grid.Row="1"
-                                    Grid.Column="1">
-                                <Entry/>
-                            </Border>
-
-                            <Label Grid.Row="2"
+                            <Label Grid.Row="3"
                                    Grid.Column="0"
-                                   Text="StopLoss (Pips)"
+                                   Text="Stop Loss (Pips)"
                                    VerticalOptions="Center"/>
-                            <Border Grid.Row="2"
-                                    Grid.Column="1">
-                                <Entry/>
-                            </Border>
 
+                            <!--Risk Management Entries Grid-->
+                            <Grid Grid.Column="1"
+                                  RowDefinitions="*,*,*,*"
+                                  ColumnDefinitions="*,0.25*"
+                                  Grid.RowSpan="4"
+                                  ColumnSpacing="10"
+                                  RowSpacing="10">
+
+                                <!--Currency Picker Entry-->
+                                <Border Grid.Row="0"
+                                        Grid.Column="0"
+                                        StrokeShape="RoundRectangle 10">
+
+                                    <Picker x:Name="currencyPicker"
+                                            Title="select"
+                                            ItemsSource="{Binding Currencies}"
+                                            FontFamily="mainfont"
+                                            ItemDisplayBinding="{Binding Code}"
+                                            SelectedItem="{Binding SelectedCurrency}"
+                                            VerticalTextAlignment="Center"/>
+                                </Border>
+
+                                <!--Currency Image Entry-->
+                                <Border Grid.Row="0"
+                                        Grid.Column="1"
+                                        StrokeShape="RoundRectangle 10">
+                                    <Image Source="{Binding SelectedCurrency.Flag}"
+                                           HeightRequest="20"
+                                           WidthRequest="30"/>
+                                </Border>
+
+                                <!--Account Balance Entry-->
+                                <Border Grid.Row="1"
+                                        Grid.Column="0"
+                                        StrokeShape="RoundRectangle 10">
+
+                                    <Entry x:Name="AccountBalanceEntry"
+                                           Placeholder="Enter amount"
+                                           Keyboard="Numeric"
+                                           Text="{Binding FormattedBalance}"
+                                           ClearButtonVisibility="WhileEditing"
+                                           Unfocused="AccountBalanceEntryUnfocused"/>
+                                </Border>
+
+                                <!--Risk Entry-->
+                                <Border Grid.Row="2"
+                                        Grid.Column="0"
+                                        StrokeShape="RoundRectangle 10">
+
+                                    <Entry Placeholder="e.g 2"
+                                           Keyboard="Numeric"
+                                           Text="{Binding Risk}"/>
+                                </Border>
+
+                                <!--Stop Loss in Pips Entry-->
+                                <Border Grid.Row="3"
+                                        Grid.Column="0"
+                                        StrokeShape="RoundRectangle 10">
+
+                                    <Entry Placeholder="30"
+                                           Keyboard="Numeric"
+                                           Text="{Binding StopLossInPips}"/>
+
+                                </Border>
+
+                            </Grid>
                         </Grid>
                     </Border>
                 </Grid>
