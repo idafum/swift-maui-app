@@ -8,7 +8,8 @@
              xmlns:model="clr-namespace:LotSizeCalculator.Models"
              xmlns:viewmodel="clr-namespace:LotSizeCalculator.ViewModels"
              x:DataType="viewmodel:CalculatorViewModel"
-             Title="Lot Size Calcuator">
+             Title="Lot Size Calcuator"
+             HideSoftInputOnTapped="True">
 
     <Border Margin="30"
             Stroke="Transparent"
@@ -146,9 +147,12 @@
                                         Grid.Column="0"
                                         StrokeShape="RoundRectangle 10">
 
-                                    <Entry Placeholder="Enter amount"
+                                    <Entry x:Name="AccountBalanceEntry"
+                                           Placeholder="Enter amount"
                                            Keyboard="Numeric"
-                                           Text="{Binding AccountBalance}"/>
+                                           Text="{Binding FormattedBalance}"
+                                           ClearButtonVisibility="WhileEditing"
+                                           Unfocused="AccountBalanceEntryUnfocused"/>
                                 </Border>
 
                                 <!--Risk Entry-->
