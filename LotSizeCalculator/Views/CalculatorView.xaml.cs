@@ -12,5 +12,13 @@ public partial class CalculatorView : ContentPage
     {
         InitializeComponent();
         BindingContext = new CalculatorViewModel();
+
+        Init();
+    }
+
+    //Set the currency Picker default value
+    private void Init()
+    {
+        currencyPicker.SelectedIndex = 0;
     }
 }

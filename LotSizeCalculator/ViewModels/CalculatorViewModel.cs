@@ -2,8 +2,6 @@
     The Calculator View Model controls the Calculator view
 */
 
-
-
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using LotSizeCalculator.Models;
@@ -18,11 +16,19 @@ public partial class CalculatorViewModel : ObservableObject
     [ObservableProperty]
     Currency selectedCurrency;
 
+    [ObservableProperty]
+    double accountBalance;
+
+    [ObservableProperty]
+    double risk;
+
+    [ObservableProperty]
+    double stopLossInPips;
+
     public CalculatorViewModel()
     {
         InitCurrencies();
-        // selectedCurrency = new();
-
+        SelectedCurrency = new();
     }
 
     public void InitCurrencies()

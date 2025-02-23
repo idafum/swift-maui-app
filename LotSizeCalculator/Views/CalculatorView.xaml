@@ -107,13 +107,13 @@
 
                             <Label Grid.Row="3"
                                    Grid.Column="0"
-                                   Text="StopLoss (Pips)"
+                                   Text="Stop Loss (Pips)"
                                    VerticalOptions="Center"/>
 
                             <!--Risk Management Entries Grid-->
                             <Grid Grid.Column="1"
                                   RowDefinitions="*,*,*,*"
-                                  ColumnDefinitions="*,*"
+                                  ColumnDefinitions="*,0.25*"
                                   Grid.RowSpan="4"
                                   ColumnSpacing="10"
                                   RowSpacing="10">
@@ -123,10 +123,13 @@
                                         Grid.Column="0"
                                         StrokeShape="RoundRectangle 10">
 
-                                    <Picker Title="select"
+                                    <Picker x:Name="currencyPicker"
+                                            Title="select"
                                             ItemsSource="{Binding Currencies}"
+                                            FontFamily="mainfont"
                                             ItemDisplayBinding="{Binding Code}"
-                                            SelectedItem="{Binding SelectedCurrency}"/>
+                                            SelectedItem="{Binding SelectedCurrency}"
+                                            VerticalTextAlignment="Center"/>
                                 </Border>
 
                                 <!--Currency Image Entry-->
@@ -143,7 +146,9 @@
                                         Grid.Column="0"
                                         StrokeShape="RoundRectangle 10">
 
-
+                                    <Entry Placeholder="Enter amount"
+                                           Keyboard="Numeric"
+                                           Text="{Binding AccountBalance}"/>
                                 </Border>
 
                                 <!--Risk Entry-->
@@ -151,12 +156,19 @@
                                         Grid.Column="0"
                                         StrokeShape="RoundRectangle 10">
 
+                                    <Entry Placeholder="e.g 2"
+                                           Keyboard="Numeric"
+                                           Text="{Binding Risk}"/>
                                 </Border>
 
                                 <!--Stop Loss in Pips Entry-->
                                 <Border Grid.Row="3"
                                         Grid.Column="0"
                                         StrokeShape="RoundRectangle 10">
+
+                                    <Entry Placeholder="30"
+                                           Keyboard="Numeric"
+                                           Text="{Binding StopLossInPips}"/>
 
                                 </Border>
 
