@@ -4,12 +4,14 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="LotSizeCalculator.Views.CalculatorView"
              xmlns:model="clr-namespace:LotSizeCalculator.Models"
              xmlns:viewmodel="clr-namespace:LotSizeCalculator.ViewModels"
              x:DataType="viewmodel:CalculatorViewModel"
              Title="Lot Size Calcuator"
-             HideSoftInputOnTapped="True">
+             HideSoftInputOnTapped="True"
+             x:Name="Page">
 
     <Border Margin="30"
             Stroke="Transparent"
@@ -151,8 +153,14 @@
                                            Placeholder="Enter amount"
                                            Keyboard="Numeric"
                                            Text="{Binding FormattedBalance}"
-                                           ClearButtonVisibility="WhileEditing"
-                                           Unfocused="AccountBalanceEntryUnfocused"/>
+                                           ClearButtonVisibility="WhileEditing">
+                                        <Entry.Behaviors>
+                                            <toolkit:EventToCommandBehavior
+                                                EventName="Unfocused"
+                                                BindingContext="{Binding Path=BindingContext, Source={x:Reference AccountBalanceEntry}, x:DataType=Entry}"
+                                                Command="{Binding FormatBalanceCommand}"/>
+                                        </Entry.Behaviors>
+                                    </Entry>
                                 </Border>
 
                                 <!--Risk Entry-->
