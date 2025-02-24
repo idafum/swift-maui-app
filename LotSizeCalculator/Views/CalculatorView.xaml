@@ -181,7 +181,7 @@
                                         Grid.Column="0"
                                         StrokeShape="RoundRectangle 10">
 
-                                    <Entry Placeholder="e.g 2"
+                                    <Entry Placeholder="Enter risk"
                                            Keyboard="Numeric"
                                            Text="{Binding Risk}"
                                            ClearButtonVisibility="WhileEditing">
@@ -202,9 +202,18 @@
                                         Grid.Column="0"
                                         StrokeShape="RoundRectangle 10">
 
-                                    <Entry Placeholder="30"
+                                    <Entry Placeholder="Enter Stop Loss"
                                            Keyboard="Numeric"
-                                           Text="{Binding StopLossInPips}"/>
+                                           Text="{Binding StopLossInPips}">
+                                        <Entry.Behaviors>
+                                            <toolkit:NumericValidationBehavior
+                                                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                ValidStyle="{StaticResource ValidEntryStyle}"
+                                                Flags="ValidateOnValueChanged"
+                                                MinimumValue="1"
+                                                MaximumDecimalPlaces="1"/>
+                                        </Entry.Behaviors>
+                                    </Entry>
 
                                 </Border>
 
