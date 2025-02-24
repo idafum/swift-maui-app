@@ -50,7 +50,30 @@ public partial class CalculatorViewModel : ObservableObject
     [RelayCommand]
     private void FormatBalance()
     {
-        Debug.WriteLine("Working");
+        //Use the currentCulture to format the balance
+
+        //Convert the CurrentFormatedCurrency to a double
+
+        //If no balance was entered
+        if (FormattedBalance.Trim() == "" || SelectedCurrency == null)
+        {
+            return;
+        }
+
+        CultureInfo culture = SelectedCurrency.GetCulture();
+
+        if (double.TryParse(FormattedBalance, NumberStyles.Currency, culture, out double amount) ||
+            double.TryParse(FormattedBalance, NumberStyles.Number, CultureInfo.InvariantCulture, out amount))
+        {
+            AccountBalance = amount;
+            FormattedBalance = amount.ToString("C", culture);
+            Debug.WriteLine($"Account Balance: {AccountBalance}, Formatted Balance: {FormattedBalance}");
+        }
+        else
+        {
+            //Print Error.
+        }
+
     }
     partial void OnSelectedCurrencyChanged(Currency? oldValue, Currency newValue)
     {
