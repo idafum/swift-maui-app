@@ -47,46 +47,37 @@ public partial class CalculatorViewModel : ObservableObject
         Currencies.Add(new Currency { Code = "CHF", Flag = "chf.png" });
     }
 
+    /// <summary>
+    /// Format the Balance when triggered by either the Unfocused Event of the Currency Change
+    /// </summary>
+    /// <param name="oldCulture">Optional parameter</param>
     [RelayCommand]
-    private void FormatBalance()
+    private void FormatBalance(CultureInfo? oldCulture = null)
     {
-        //Use the currentCulture to format the balance
-
-        //Convert the CurrentFormatedCurrency to a double
-
         //If no balance was entered
         if (FormattedBalance.Trim() == "" || SelectedCurrency == null)
         {
             return;
         }
+        CultureInfo parseCulture = oldCulture ?? SelectedCurrency.GetCulture(); //Use Old Culture if provided, otherwise use new culture
+        CultureInfo newCulture = SelectedCurrency.GetCulture();
 
-        CultureInfo culture = SelectedCurrency.GetCulture();
-
-        if (double.TryParse(FormattedBalance, NumberStyles.Currency, culture, out double amount) ||
+        if (double.TryParse(FormattedBalance, NumberStyles.Currency, parseCulture, out double amount) ||
             double.TryParse(FormattedBalance, NumberStyles.Number, CultureInfo.InvariantCulture, out amount))
         {
             AccountBalance = amount;
-            FormattedBalance = amount.ToString("C", culture);
+            FormattedBalance = amount.ToString("C", newCulture);
             Debug.WriteLine($"Account Balance: {AccountBalance}, Formatted Balance: {FormattedBalance}");
         }
         else
         {
-            //Print Error.
+            Debug.WriteLine("Error parsing account balance");
         }
 
     }
     partial void OnSelectedCurrencyChanged(Currency? oldValue, Currency newValue)
     {
         if (newValue != null && oldValue != null)
-        {
-            var oldCulture = oldValue.GetCulture();
-            var newCulture = newValue.GetCulture();
-
-            if (double.TryParse(FormattedBalance, NumberStyles.Currency, oldCulture, out double amount))
-            {
-                AccountBalance = amount;
-                FormattedBalance = amount.ToString("C", newCulture);
-            }
-        }
+            FormatBalanceCommand.Execute(oldValue.GetCulture());
     }
 }

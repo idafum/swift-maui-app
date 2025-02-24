@@ -158,8 +158,7 @@
                                             <toolkit:EventToCommandBehavior
                                                 EventName="Unfocused"
                                                 BindingContext="{Binding Path=BindingContext, Source={x:Reference AccountBalanceEntry}, x:DataType=Entry}"
-                                                Command="{Binding FormatBalanceCommand}"
-                                                CommandParameter="Entry.Text"/>
+                                                Command="{Binding FormatBalanceCommand}"/>
                                         </Entry.Behaviors>
                                     </Entry>
                                 </Border>
