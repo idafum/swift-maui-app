@@ -17,7 +17,7 @@ public partial class CalculatorViewModel : ObservableObject
     public ObservableCollection<Currency> Currencies { get; set; } = [];
 
     [ObservableProperty]
-    Currency selectedCurrency;
+    Currency selectedCurrency; //This property should be initialized
 
     [ObservableProperty]
     double accountBalance;
@@ -47,39 +47,37 @@ public partial class CalculatorViewModel : ObservableObject
         Currencies.Add(new Currency { Code = "CHF", Flag = "chf.png" });
     }
 
-    // partial void OnSelectedCurrencyChanged(Currency? oldValue, Currency newValue)
-    // {
-    //     Debug.WriteLine($"Currency has changed to {newValue.Code}");
+    /// <summary>
+    /// Format the Balance when triggered by either the Unfocused Event of the Currency Change
+    /// </summary>
+    /// <param name="oldCulture">Optional parameter</param>
+    [RelayCommand]
+    private void FormatBalance(CultureInfo? oldCulture = null)
+    {
+        //If no balance was entered
+        if (FormattedBalance.Trim() == "" || SelectedCurrency == null)
+        {
+            return;
+        }
+        CultureInfo parseCulture = oldCulture ?? SelectedCurrency.GetCulture(); //Use Old Culture if provided, otherwise use new culture
+        CultureInfo newCulture = SelectedCurrency.GetCulture();
 
-    //     if (newValue != null)
-    //     {
-    //         CultureInfo oldCulture;
-    //         if (oldValue != null)
-    //         {
-    //             oldCulture = oldValue.GetCulture();
-    //             Debug.WriteLine($"Old Culture: {oldCulture}");
-    //         }
+        if (double.TryParse(FormattedBalance, NumberStyles.Currency, parseCulture, out double amount) ||
+            double.TryParse(FormattedBalance, NumberStyles.Number, CultureInfo.InvariantCulture, out amount))
+        {
+            AccountBalance = amount;
+            FormattedBalance = amount.ToString("C", newCulture);
+            Debug.WriteLine($"Account Balance: {AccountBalance}, Formatted Balance: {FormattedBalance}");
+        }
+        else
+        {
+            Debug.WriteLine("Error parsing account balance");
+        }
 
-    //         CultureInfo newCulture = newValue.GetCulture();
-
-    //         Debug.WriteLine($"New Culture: {newCulture}");
-
-    //         if (double.TryParse(FormattedBalance, NumberStyles.Currency, oldCulture, out double amount))
-    //     }
-    // }
-
+    }
     partial void OnSelectedCurrencyChanged(Currency? oldValue, Currency newValue)
     {
         if (newValue != null && oldValue != null)
-        {
-            var oldCulture = oldValue.GetCulture();
-            var newCulture = newValue.GetCulture();
-
-            if (double.TryParse(FormattedBalance, NumberStyles.Currency, oldCulture, out double amount))
-            {
-                AccountBalance = amount;
-                FormattedBalance = amount.ToString("C", newCulture);
-            }
-        }
+            FormatBalanceCommand.Execute(oldValue.GetCulture());
     }
 }

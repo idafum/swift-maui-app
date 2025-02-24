@@ -24,38 +24,4 @@ public partial class CalculatorView : ContentPage
 
     }
 
-    private void AccountBalanceEntryUnfocused(object sender, FocusEventArgs e)
-    {
-
-        //Ensure sender is entry and try converting to double
-        if (sender is Entry entry)
-        {
-            CultureInfo culture;
-            Currency seletedCurrency = vm.SelectedCurrency;
-            if (seletedCurrency != null)
-            {
-                culture = seletedCurrency.GetCulture();
-
-                //If user input it a Number
-                if (double.TryParse(entry.Text, out double amount))
-                {
-                    vm.AccountBalance = amount;
-                    vm.FormattedBalance = amount.ToString("C", culture);
-                    Debug.WriteLine($"Account Balance: {vm.AccountBalance}, Formatted Balance: {vm.FormattedBalance}");
-                }
-
-                if (double.TryParse(entry.Text, NumberStyles.Currency, culture, out double amount2))
-                {
-                    vm.AccountBalance = amount2;
-                    vm.FormattedBalance = amount2.ToString("C", culture);
-                    Debug.WriteLine($"Account Balance: {vm.AccountBalance}, Formatted Balance: {vm.FormattedBalance}");
-                }
-            }
-        }
-        else
-        {
-            //Display a popup. Please enter valid balance
-        }
-    }
-
 }
