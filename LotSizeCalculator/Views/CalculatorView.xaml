@@ -13,6 +13,19 @@
              HideSoftInputOnTapped="True"
              x:Name="Page">
 
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle"
+               TargetType="Entry">
+            <Setter Property="TextColor"
+                    Value="Red"/>
+        </Style>
+        <Style x:Key="ValidEntryStyle"
+               TargetType="Entry">
+            <Setter Property="TextColor"
+                    Value="Green"/>
+        </Style>
+    </ContentPage.Resources>
+
     <Border Margin="30"
             Stroke="Transparent"
             StrokeShape="RoundRectangle 10,10,10,10">
@@ -170,7 +183,18 @@
 
                                     <Entry Placeholder="e.g 2"
                                            Keyboard="Numeric"
-                                           Text="{Binding Risk}"/>
+                                           Text="{Binding Risk}"
+                                           ClearButtonVisibility="WhileEditing">
+                                        <Entry.Behaviors>
+                                            <toolkit:NumericValidationBehavior
+                                                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                ValidStyle="{StaticResource ValidEntryStyle}"
+                                                Flags="ValidateOnValueChanged"
+                                                MinimumValue="0.1"
+                                                MaximumValue="100.0"
+                                                MaximumDecimalPlaces="2"/>
+                                        </Entry.Behaviors>
+                                    </Entry>
                                 </Border>
 
                                 <!--Stop Loss in Pips Entry-->
