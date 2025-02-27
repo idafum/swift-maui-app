@@ -13,19 +13,6 @@
              HideSoftInputOnTapped="True"
              x:Name="Page">
 
-    <ContentPage.Resources>
-        <Style x:Key="InvalidEntryStyle"
-               TargetType="Entry">
-            <Setter Property="TextColor"
-                    Value="Red"/>
-        </Style>
-        <Style x:Key="ValidEntryStyle"
-               TargetType="Entry">
-            <Setter Property="TextColor"
-                    Value="Green"/>
-        </Style>
-    </ContentPage.Resources>
-
     <Border Margin="30"
             Stroke="Transparent"
             StrokeShape="RoundRectangle 10,10,10,10">
@@ -37,7 +24,7 @@
             <Border Grid.Row="0"
                     Stroke="Transparent">
                 <Grid RowDefinitions="0.2*,*"
-                      RowSpacing="8">
+                      RowSpacing="10">
                     <!--Section Heading-->
                     <Label Grid.Row="0"
                            Text="Risk Management"
@@ -50,28 +37,25 @@
 
                         <!--4*3 Grid-->
                         <Grid RowDefinitions="*,*,*,*"
-                              ColumnDefinitions="0.6*,*,0.25*"
+                              ColumnDefinitions="0.65*,*,0.25*"
                               ColumnSpacing="5">
 
                             <!--Currency Entry field-->
                             <Label Style="{StaticResource SubHeadline}"
                                    Grid.Row="0"
                                    Grid.Column="0"
-                                   Text="Currency"/>
+                                   Text="Currency :"/>
 
                             <Border Grid.Row="0"
                                     Grid.Column="1"
-                                    Stroke="Transparent"
-                                    Margin="5">
+                                    Style="{StaticResource EntryBorder}">
 
                                 <Picker x:Name="currencyPicker"
                                         Title="select currency"
                                         ItemsSource="{Binding Currencies}"
-                                        FontFamily="mainfont"
                                         ItemDisplayBinding="{Binding Code}"
                                         SelectedItem="{Binding SelectedCurrency}"
-                                        VerticalTextAlignment="Center"
-                                        Background="lightGrey"/>
+                                        FontFamily="Bold"/>
                             </Border>
 
                             <Border Grid.Row="0"
@@ -88,7 +72,7 @@
                             <Label  Style="{StaticResource SubHeadline}"
                                     Grid.Row="1"
                                     Grid.Column="0"
-                                    Text="Account Balance"/>
+                                    Text="Account Balance :"/>
 
                             <Border Grid.Row="1"
                                     Grid.Column="1"
@@ -112,7 +96,7 @@
                             <Label Style="{StaticResource SubHeadline}"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                   Text="Risk %"/>
+                                   Text="Risk % :"/>
 
                             <Border Grid.Row="2"
                                     Grid.Column="1"
@@ -129,7 +113,7 @@
                             <Label Style="{StaticResource SubHeadline}"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                   Text="Stop Loss (Pips)"/>
+                                   Text="Stop Loss (Pips) :"/>
 
                             <Border Grid.Row="3"
                                     Grid.Column="1"
@@ -148,51 +132,58 @@
             <Border Grid.Row="1"
                     Stroke="Transparent">
                 <Grid RowDefinitions="0.2*,*"
-                      RowSpacing="8">
-                    <Label Text="Trade Details"
-                           Grid.Row="0"
+                      RowSpacing="10">
+                    <!--Section Heading-->
+                    <Label Grid.Row="0"
+                           Text="Trade Details"
                            Style="{StaticResource Headline}"/>
 
+                    <!--Section Border 1-->
                     <Border Grid.Row="1"
-                            StrokeShape="RoundRectangle 10">
+                            StrokeShape="RoundRectangle 10"
+                            Stroke="Transparent">
 
-                        <Grid RowDefinitions="*,*,*"
-                              ColumnDefinitions="*,*"
-                              Margin="15">
+                        <!--3*3 Grid-->
+                        <Grid RowDefinitions="*,*,*,*"
+                              ColumnDefinitions="0.65*,*,0.25*"
+                              ColumnSpacing="5">
 
-                            <Label Grid.Row="0"
+                            <!-- Pair-->
+                            <Label Style="{StaticResource SubHeadline}"
+                                   Grid.Row="0"
                                    Grid.Column="0"
-                                   Text="Pair"
-                                   VerticalOptions="Center"/>
+                                   Text="Pair :"/>
+
                             <Border Grid.Row="0"
-                                    Grid.Column="1">
-                                <Picker Title="Select a Pair">
-                                    <Picker.ItemsSource>
-                                        <x:Array Type="{x:Type x:String}">
-                                            <x:String>EURUSD</x:String>
-                                            <x:String>GBPUSD</x:String>
-                                        </x:Array>
-                                    </Picker.ItemsSource>
-                                </Picker>
+                                    Grid.Column="1"
+                                    Style="{StaticResource EntryBorder}">
+                                <Picker x:Name="PairPicker"
+                                        Title="select pair"
+                                        ItemsSource="{Binding Pairs}"
+                                        FontFamily="Bold"/>
                             </Border>
 
-                            <Label Grid.Row="1"
+                            <!-- Trade Type Entry-->
+                            <Label Style="{StaticResource SubHeadline}"
+                                   Grid.Row="1"
                                    Grid.Column="0"
-                                   Text="Type"
-                                   VerticalOptions="Center"/>
+                                   Text="Type :"/>
 
                             <Border Grid.Row="1"
-                                    Grid.Column="1">
-                                <Entry/>
+                                    Grid.Column="1"
+                                    Style="{StaticResource EntryBorder}">
+                                <Entry Style="{StaticResource EntryField}"/>
                             </Border>
 
-                            <Label Grid.Row="2"
+                            <!--Market Price Entry-->
+                            <Label Style="{StaticResource SubHeadline}"
+                                   Grid.Row="2"
                                    Grid.Column="0"
-                                   Text="Market Price"
-                                   VerticalOptions="Center"/>
+                                   Text="Market Price :"/>
                             <Border Grid.Row="2"
-                                    Grid.Column="1">
-                                <Entry/>
+                                    Grid.Column="1"
+                                    Style="{StaticResource EntryBorder}">
+                                <Entry Style="{StaticResource EntryField}"/>
                             </Border>
 
                         </Grid>
