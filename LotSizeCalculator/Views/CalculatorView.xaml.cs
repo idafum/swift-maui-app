@@ -4,7 +4,6 @@
 */
 using System.Diagnostics;
 using System.Globalization;
-using CoreMotion;
 using LotSizeCalculator.Models;
 using LotSizeCalculator.ViewModels;
 

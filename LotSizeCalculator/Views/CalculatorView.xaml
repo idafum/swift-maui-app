@@ -33,12 +33,125 @@
         <Grid RowDefinitions="*,*,*"
               RowSpacing="10">
 
-            <!--Trade Details-->
+            <!--Risk Management-->
             <Border Grid.Row="0"
                     Stroke="Transparent">
-                <Grid RowDefinitions="0.2*,*">
+                <Grid RowDefinitions="0.2*,*"
+                      RowSpacing="8">
+                    <!--Section Heading-->
+                    <Label Grid.Row="0"
+                           Text="Risk Management"
+                           Style="{StaticResource Headline}"/>
+
+                    <!--Section Border 1-->
+                    <Border Grid.Row="1"
+                            StrokeShape="RoundRectangle 10"
+                            Stroke="Transparent">
+
+                        <!--4*3 Grid-->
+                        <Grid RowDefinitions="*,*,*,*"
+                              ColumnDefinitions="0.6*,*,0.25*"
+                              ColumnSpacing="5">
+
+                            <!--Currency Entry field-->
+                            <Label Style="{StaticResource SubHeadline}"
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   Text="Currency"/>
+
+                            <Border Grid.Row="0"
+                                    Grid.Column="1"
+                                    Stroke="Transparent"
+                                    Margin="5">
+
+                                <Picker x:Name="currencyPicker"
+                                        Title="select currency"
+                                        ItemsSource="{Binding Currencies}"
+                                        FontFamily="mainfont"
+                                        ItemDisplayBinding="{Binding Code}"
+                                        SelectedItem="{Binding SelectedCurrency}"
+                                        VerticalTextAlignment="Center"
+                                        Background="lightGrey"/>
+                            </Border>
+
+                            <Border Grid.Row="0"
+                                    Grid.Column="2"
+                                    Margin="10"
+                                    StrokeShape="RoundRectangle 10"
+                                    BackgroundColor="Transparent">
+
+                                <Image Source="{Binding SelectedCurrency.Flag}"
+                                       Aspect="AspectFill"/>
+                            </Border>
+
+                            <!--Account Balance Entry Fields-->
+                            <Label  Style="{StaticResource SubHeadline}"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Text="Account Balance"/>
+
+                            <Border Grid.Row="1"
+                                    Grid.Column="1"
+                                    Style="{StaticResource EntryBorder}">
+
+                                <Entry x:Name="AccountBalanceEntry"
+                                       Placeholder="Enter amount"
+                                       Text="{Binding FormattedBalance}"
+                                       Style="{StaticResource EntryField}">
+                                    <Entry.Behaviors>
+                                        <toolkit:EventToCommandBehavior
+                                            EventName="Unfocused"
+                                            BindingContext="{Binding Path=BindingContext, Source={x:Reference AccountBalanceEntry}, x:DataType=Entry}"
+                                            Command="{Binding FormatBalanceCommand}"/>
+                                    </Entry.Behaviors>
+                                </Entry>
+                            </Border>
+
+
+                            <!--Risk entry field-->
+                            <Label Style="{StaticResource SubHeadline}"
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                   Text="Risk %"/>
+
+                            <Border Grid.Row="2"
+                                    Grid.Column="1"
+                                    Style="{StaticResource EntryBorder}">
+
+                                <Entry Placeholder="Enter risk"
+                                       Text="{Binding Risk}"
+                                       Style="{StaticResource EntryField}"/>
+
+                            </Border>
+
+
+                            <!--Stop loss entry fields-->
+                            <Label Style="{StaticResource SubHeadline}"
+                                   Grid.Row="3"
+                                   Grid.Column="0"
+                                   Text="Stop Loss (Pips)"/>
+
+                            <Border Grid.Row="3"
+                                    Grid.Column="1"
+                                    Style="{StaticResource EntryBorder}">
+
+                                <Entry Placeholder="Enter Stop Loss"
+                                       Text="{Binding StopLossInPips}"
+                                       Style="{StaticResource EntryField}"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!--Trade Details-->
+            <Border Grid.Row="1"
+                    Stroke="Transparent">
+                <Grid RowDefinitions="0.2*,*"
+                      RowSpacing="8">
                     <Label Text="Trade Details"
-                           Grid.Row="0"/>
+                           Grid.Row="0"
+                           Style="{StaticResource Headline}"/>
 
                     <Border Grid.Row="1"
                             StrokeShape="RoundRectangle 10">
@@ -88,140 +201,6 @@
                 </Grid>
             </Border>
 
-            <!--Risk Management-->
-            <Border Grid.Row="1"
-                    Stroke="Transparent">
-
-                <Grid RowDefinitions="0.2*,*">
-
-                    <!--Section Heading-->
-                    <Label Grid.Row="0"
-                           Text="Risk Management"/>
-
-                    <!--Section Border 1-->
-                    <Border Grid.Row="1"
-                            StrokeShape="RoundRectangle 10">
-
-                        <Grid RowDefinitions="*,*,*,*"
-                              ColumnDefinitions="0.6*,*"
-                              Margin="15">
-
-                            <Label Grid.Row="0"
-                                   Grid.Column="0"
-                                   Text="Currency"
-                                   VerticalOptions="Center"/>
-
-                            <Label Grid.Row="1"
-                                   Grid.Column="0"
-                                   Text="Account Balance"
-                                   VerticalOptions="Center"/>
-
-                            <Label Grid.Row="2"
-                                   Grid.Column="0"
-                                   Text="Risk %"
-                                   VerticalOptions="Center"/>
-
-                            <Label Grid.Row="3"
-                                   Grid.Column="0"
-                                   Text="Stop Loss (Pips)"
-                                   VerticalOptions="Center"/>
-
-                            <!--Risk Management Entries Grid-->
-                            <Grid Grid.Column="1"
-                                  RowDefinitions="*,*,*,*"
-                                  ColumnDefinitions="*,0.25*"
-                                  Grid.RowSpan="4"
-                                  ColumnSpacing="10"
-                                  RowSpacing="10">
-
-                                <!--Currency Picker Entry-->
-                                <Border Grid.Row="0"
-                                        Grid.Column="0"
-                                        StrokeShape="RoundRectangle 10">
-
-                                    <Picker x:Name="currencyPicker"
-                                            Title="select"
-                                            ItemsSource="{Binding Currencies}"
-                                            FontFamily="mainfont"
-                                            ItemDisplayBinding="{Binding Code}"
-                                            SelectedItem="{Binding SelectedCurrency}"
-                                            VerticalTextAlignment="Center"/>
-                                </Border>
-
-                                <!--Currency Image Entry-->
-                                <Border Grid.Row="0"
-                                        Grid.Column="1"
-                                        StrokeShape="RoundRectangle 10">
-                                    <Image Source="{Binding SelectedCurrency.Flag}"
-                                           HeightRequest="20"
-                                           WidthRequest="30"/>
-                                </Border>
-
-                                <!--Account Balance Entry-->
-                                <Border Grid.Row="1"
-                                        Grid.Column="0"
-                                        StrokeShape="RoundRectangle 10">
-
-                                    <Entry x:Name="AccountBalanceEntry"
-                                           Placeholder="Enter amount"
-                                           Keyboard="Numeric"
-                                           Text="{Binding FormattedBalance}"
-                                           ClearButtonVisibility="WhileEditing">
-                                        <Entry.Behaviors>
-                                            <toolkit:EventToCommandBehavior
-                                                EventName="Unfocused"
-                                                BindingContext="{Binding Path=BindingContext, Source={x:Reference AccountBalanceEntry}, x:DataType=Entry}"
-                                                Command="{Binding FormatBalanceCommand}"/>
-                                        </Entry.Behaviors>
-                                    </Entry>
-                                </Border>
-
-                                <!--Risk Entry-->
-                                <Border Grid.Row="2"
-                                        Grid.Column="0"
-                                        StrokeShape="RoundRectangle 10">
-
-                                    <Entry Placeholder="Enter risk"
-                                           Keyboard="Numeric"
-                                           Text="{Binding Risk}"
-                                           ClearButtonVisibility="WhileEditing">
-                                        <Entry.Behaviors>
-                                            <toolkit:NumericValidationBehavior
-                                                InvalidStyle="{StaticResource InvalidEntryStyle}"
-                                                ValidStyle="{StaticResource ValidEntryStyle}"
-                                                Flags="ValidateOnValueChanged"
-                                                MinimumValue="0.1"
-                                                MaximumValue="100.0"
-                                                MaximumDecimalPlaces="2"/>
-                                        </Entry.Behaviors>
-                                    </Entry>
-                                </Border>
-
-                                <!--Stop Loss in Pips Entry-->
-                                <Border Grid.Row="3"
-                                        Grid.Column="0"
-                                        StrokeShape="RoundRectangle 10">
-
-                                    <Entry Placeholder="Enter Stop Loss"
-                                           Keyboard="Numeric"
-                                           Text="{Binding StopLossInPips}">
-                                        <Entry.Behaviors>
-                                            <toolkit:NumericValidationBehavior
-                                                InvalidStyle="{StaticResource InvalidEntryStyle}"
-                                                ValidStyle="{StaticResource ValidEntryStyle}"
-                                                Flags="ValidateOnValueChanged"
-                                                MinimumValue="1"
-                                                MaximumDecimalPlaces="1"/>
-                                        </Entry.Behaviors>
-                                    </Entry>
-
-                                </Border>
-
-                            </Grid>
-                        </Grid>
-                    </Border>
-                </Grid>
-            </Border>
 
             <!--Calculate-->
             <Border Grid.Row="2">
