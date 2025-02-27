@@ -36,59 +36,68 @@
             <!--Risk Management-->
             <Border Grid.Row="0"
                     Stroke="Transparent">
-                <Grid RowDefinitions="0.2*,*">
+                <Grid RowDefinitions="0.2*,*"
+                      RowSpacing="8">
                     <!--Section Heading-->
                     <Label Grid.Row="0"
-                           Text="Risk Management"/>
+                           Text="Risk Management"
+                           Style="{StaticResource Headline}"/>
 
                     <!--Section Border 1-->
                     <Border Grid.Row="1"
-                            StrokeShape="RoundRectangle 10">
+                            StrokeShape="RoundRectangle 10"
+                            Stroke="Transparent">
 
                         <!--4*3 Grid-->
                         <Grid RowDefinitions="*,*,*,*"
                               ColumnDefinitions="0.6*,*,0.25*"
-                              Margin="15">
+                              ColumnSpacing="5">
 
                             <!--Currency Entry field-->
-                            <Label Grid.Row="0"
+                            <Label Style="{StaticResource SubHeadline}"
+                                   Grid.Row="0"
                                    Grid.Column="0"
-                                   Text="Currency"
-                                   VerticalOptions="Center"/>
+                                   Text="Currency"/>
 
                             <Border Grid.Row="0"
                                     Grid.Column="1"
-                                    StrokeShape="RoundRectangle 10">
+                                    Stroke="Transparent"
+                                    Margin="5">
+
                                 <Picker x:Name="currencyPicker"
-                                        Title="select"
+                                        Title="select currency"
                                         ItemsSource="{Binding Currencies}"
                                         FontFamily="mainfont"
                                         ItemDisplayBinding="{Binding Code}"
                                         SelectedItem="{Binding SelectedCurrency}"
-                                        VerticalTextAlignment="Center"/>
+                                        VerticalTextAlignment="Center"
+                                        Background="lightGrey"/>
                             </Border>
 
                             <Border Grid.Row="0"
-                                    Grid.Column="2">
+                                    Grid.Column="2"
+                                    Margin="10"
+                                    StrokeShape="RoundRectangle 10"
+                                    BackgroundColor="Transparent">
+
                                 <Image Source="{Binding SelectedCurrency.Flag}"
-                                       HeightRequest="20"
-                                       WidthRequest="30"/>
+                                       Aspect="AspectFill"/>
                             </Border>
 
                             <!--Account Balance Entry Fields-->
-                            <Label Grid.Row="1"
-                                   Grid.Column="0"
-                                   Text="Account Balance"
-                                   VerticalOptions="Center"/>
+                            <Label  Style="{StaticResource SubHeadline}"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Text="Account Balance"/>
 
                             <Border Grid.Row="1"
                                     Grid.Column="1"
-                                    StrokeShape="RoundRectangle 10">
+                                    Style="{StaticResource EntryBorder}">
+
                                 <Entry x:Name="AccountBalanceEntry"
                                        Placeholder="Enter amount"
-                                       Keyboard="Numeric"
                                        Text="{Binding FormattedBalance}"
-                                       ClearButtonVisibility="WhileEditing">
+                                       Style="{StaticResource EntryField}">
                                     <Entry.Behaviors>
                                         <toolkit:EventToCommandBehavior
                                             EventName="Unfocused"
@@ -98,65 +107,37 @@
                                 </Entry>
                             </Border>
 
-                            <Border Grid.Row="1"
-                                    Grid.Column="2"
-                                    StrokeShape="RoundRectangle 10">
-                                <Label Text="Info"/>
-                            </Border>
 
                             <!--Risk entry field-->
-                            <Label Grid.Row="2"
+                            <Label Style="{StaticResource SubHeadline}"
+                                   Grid.Row="2"
                                    Grid.Column="0"
-                                   Text="Risk %"
-                                   VerticalOptions="Center"/>
+                                   Text="Risk %"/>
 
                             <Border Grid.Row="2"
                                     Grid.Column="1"
-                                    StrokeShape="RoundRectangle 10">
+                                    Style="{StaticResource EntryBorder}">
+
                                 <Entry Placeholder="Enter risk"
-                                       Keyboard="Numeric"
                                        Text="{Binding Risk}"
-                                       ClearButtonVisibility="WhileEditing">
-                                    <Entry.Behaviors>
-                                        <toolkit:NumericValidationBehavior
-                                            InvalidStyle="{StaticResource InvalidEntryStyle}"
-                                            ValidStyle="{StaticResource ValidEntryStyle}"
-                                            Flags="ValidateOnValueChanged"
-                                            MinimumValue="0.1"
-                                            MaximumValue="100.0"
-                                            MaximumDecimalPlaces="2"/>
-                                    </Entry.Behaviors>
-                                </Entry>
+                                       Style="{StaticResource EntryField}"/>
+
                             </Border>
 
-                            <Border Grid.Row="2"
-                                    Grid.Column="2"
-                                    StrokeShape="RoundRectangle 10">
-                                <Label Text="Info"/>
-                            </Border>
 
                             <!--Stop loss entry fields-->
-                            <Label Grid.Row="3"
+                            <Label Style="{StaticResource SubHeadline}"
+                                   Grid.Row="3"
                                    Grid.Column="0"
-                                   Text="Stop Loss (Pips)"
-                                   VerticalOptions="Center"/>
+                                   Text="Stop Loss (Pips)"/>
 
                             <Border Grid.Row="3"
                                     Grid.Column="1"
-                                    StrokeShape="RoundRectangle 10">
+                                    Style="{StaticResource EntryBorder}">
 
                                 <Entry Placeholder="Enter Stop Loss"
-                                       Keyboard="Numeric"
-                                       Text="{Binding StopLossInPips}">
-                                    <Entry.Behaviors>
-                                        <toolkit:NumericValidationBehavior
-                                            InvalidStyle="{StaticResource InvalidEntryStyle}"
-                                            ValidStyle="{StaticResource ValidEntryStyle}"
-                                            Flags="ValidateOnValueChanged"
-                                            MinimumValue="1"
-                                            MaximumDecimalPlaces="1"/>
-                                    </Entry.Behaviors>
-                                </Entry>
+                                       Text="{Binding StopLossInPips}"
+                                       Style="{StaticResource EntryField}"/>
                             </Border>
                         </Grid>
                     </Border>
@@ -166,9 +147,11 @@
             <!--Trade Details-->
             <Border Grid.Row="1"
                     Stroke="Transparent">
-                <Grid RowDefinitions="0.2*,*">
+                <Grid RowDefinitions="0.2*,*"
+                      RowSpacing="8">
                     <Label Text="Trade Details"
-                           Grid.Row="0"/>
+                           Grid.Row="0"
+                           Style="{StaticResource Headline}"/>
 
                     <Border Grid.Row="1"
                             StrokeShape="RoundRectangle 10">
