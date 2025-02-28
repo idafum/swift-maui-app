@@ -180,18 +180,6 @@
                                 </HorizontalStackLayout>
 
                             </Border>
-
-                            <!--Market Price Entry-->
-                            <Label Style="{StaticResource SubHeadline}"
-                                   Grid.Row="2"
-                                   Grid.Column="0"
-                                   Text="Market Price :"/>
-                            <Border Grid.Row="2"
-                                    Grid.Column="1"
-                                    Style="{StaticResource EntryBorder}">
-                                <Entry Style="{StaticResource EntryField}"/>
-                            </Border>
-
                         </Grid>
                         <!--Fields-->
                     </Border>
