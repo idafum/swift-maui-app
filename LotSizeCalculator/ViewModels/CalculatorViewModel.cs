@@ -19,6 +19,9 @@ public partial class CalculatorViewModel : ObservableObject
     [ObservableProperty]
     Currency selectedCurrency; //This property should be initialized
 
+    [ObservableProperty]
+    string selectedPair = "";
+
     public ObservableCollection<string> Pairs { get; set; } = [];
 
     [ObservableProperty]
@@ -55,17 +58,7 @@ public partial class CalculatorViewModel : ObservableObject
         Pairs.Add("EURUSD");
         Pairs.Add("GBPUSD");
         Pairs.Add("AUDUSD");
-        Pairs.Add("USDCAD");
-        Pairs.Add("USDCHF");
         Pairs.Add("NZDUSD");
-
-        Pairs.Add("USDJPY");
-        Pairs.Add("EURJPY");
-        Pairs.Add("GBPJPY");
-        Pairs.Add("AUDJPY");
-        Pairs.Add("CADJPY");
-        Pairs.Add("CHFJPY");
-        Pairs.Add("NZDJPY");
     }
 
     /// <summary>

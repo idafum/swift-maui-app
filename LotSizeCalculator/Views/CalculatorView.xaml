@@ -160,6 +160,7 @@
                                 <Picker x:Name="PairPicker"
                                         Title="select pair"
                                         ItemsSource="{Binding Pairs}"
+                                        SelectedItem="{Binding SelectedPair}"
                                         FontFamily="Bold"/>
                             </Border>
 
@@ -171,8 +172,13 @@
 
                             <Border Grid.Row="1"
                                     Grid.Column="1"
-                                    Style="{StaticResource EntryBorder}">
-                                <Entry Style="{StaticResource EntryField}"/>
+                                    Margin="5"
+                                    Stroke="Transparent">
+                                <HorizontalStackLayout>
+                                    <RadioButton Content="Buy"/>
+                                    <RadioButton Content="Sell"/>
+                                </HorizontalStackLayout>
+
                             </Border>
 
                             <!--Market Price Entry-->
