@@ -18,119 +18,107 @@
             StrokeShape="RoundRectangle 10,10,10,10">
 
         <Grid RowDefinitions="*,*,*"
-              RowSpacing="10">
+              RowSpacing="10"
+              Padding="5">
 
             <!--Risk Management-->
             <Border Grid.Row="0"
-                    Stroke="Transparent">
-                <Grid RowDefinitions="0.2*,*"
-                      RowSpacing="10">
-                    <!--Section Heading-->
-                    <Label Grid.Row="0"
-                           Text="Risk Management"
-                           Style="{StaticResource Headline}"/>
+                    Style="{StaticResource SectionBorder}">
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                            Opacity="0.05"/>
+                </Border.Shadow>
 
-                    <!--Section Border 1-->
-                    <Border Grid.Row="1"
-                            StrokeShape="RoundRectangle 10"
-                            Stroke="Transparent">
+                <Grid RowDefinitions="*,*,*"
+                      ColumnDefinitions="*,*"
+                      Padding="10"
+                      RowSpacing="15"
+                      ColumnSpacing="15">
 
-                        <!--4*3 Grid-->
-                        <Grid RowDefinitions="*,*,*,*"
-                              ColumnDefinitions="0.65*,*,0.25*"
-                              ColumnSpacing="5">
+                    <!-- Currency Entry -->
+                    <VerticalStackLayout Grid.Row="0"
+                                         Grid.Column="0">
+                        <Label Style="{StaticResource SubHeadline}"
+                               Text="Currency"/>
 
-                            <!--Currency Entry field-->
-                            <Label Style="{StaticResource SubHeadline}"
-                                   Grid.Row="0"
-                                   Grid.Column="0"
-                                   Text="Currency :"/>
-
-                            <Border Grid.Row="0"
-                                    Grid.Column="1"
-                                    Style="{StaticResource EntryBorder}">
-
+                        <HorizontalStackLayout Spacing="20">
+                            <!--Currency Picker-->
+                            <Border Style="{StaticResource SectionBorder}"
+                                    StrokeThickness="1">
                                 <Picker x:Name="currencyPicker"
                                         Title="select currency"
                                         ItemsSource="{Binding Currencies}"
                                         ItemDisplayBinding="{Binding Code}"
                                         SelectedItem="{Binding SelectedCurrency}"
-                                        FontFamily="Bold"/>
+                                        FontFamily="Medium"/>
                             </Border>
 
-                            <Border Grid.Row="0"
-                                    Grid.Column="2"
-                                    Margin="10"
-                                    StrokeShape="RoundRectangle 10"
-                                    BackgroundColor="Transparent">
+                            <!--Flag-->
+                            <Image Source="{Binding SelectedCurrency.Flag}"
+                                   HeightRequest="20"
+                                   WidthRequest="20"/>
 
-                                <Image Source="{Binding SelectedCurrency.Flag}"
-                                       Aspect="AspectFill"/>
-                            </Border>
-
-                            <!--Account Balance Entry Fields-->
-                            <Label  Style="{StaticResource SubHeadline}"
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    Text="Account Balance :"/>
-
-                            <Border Grid.Row="1"
-                                    Grid.Column="1"
-                                    Style="{StaticResource EntryBorder}">
-
-                                <Entry x:Name="AccountBalanceEntry"
-                                       Placeholder="Enter amount"
-                                       Text="{Binding FormattedBalance}"
-                                       Style="{StaticResource EntryField}">
-                                    <Entry.Behaviors>
-                                        <toolkit:EventToCommandBehavior
-                                            EventName="Unfocused"
-                                            BindingContext="{Binding Path=BindingContext, Source={x:Reference AccountBalanceEntry}, x:DataType=Entry}"
-                                            Command="{Binding FormatBalanceCommand}"/>
-                                    </Entry.Behaviors>
-                                </Entry>
-                            </Border>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
 
 
-                            <!--Risk entry field-->
-                            <Label Style="{StaticResource SubHeadline}"
-                                   Grid.Row="2"
-                                   Grid.Column="0"
-                                   Text="Risk % :"/>
+                    <!-- Account Balance Entry -->
+                    <VerticalStackLayout Grid.Row="1"
+                                         Grid.Column="0">
+                        <Label Style="{StaticResource SubHeadline}"
+                               Text="Account Balance"/>
+                        <Border Style="{StaticResource SectionBorder}">
+                            <Entry x:Name="AccountBalanceEntry"
+                                   Placeholder="Enter amount"
+                                   Text="{Binding FormattedBalance}"
+                                   Style="{StaticResource EntryField}">
+                                <Entry.Behaviors>
+                                    <toolkit:EventToCommandBehavior
+                                        EventName="Unfocused"
+                                        BindingContext="{Binding Path=BindingContext, Source={x:Reference AccountBalanceEntry}, x:DataType=Entry}"
+                                        Command="{Binding FormatBalanceCommand}"/>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </Border>
+                    </VerticalStackLayout>
 
-                            <Border Grid.Row="2"
-                                    Grid.Column="1"
-                                    Style="{StaticResource EntryBorder}">
 
-                                <Entry Placeholder="Enter risk"
-                                       Text="{Binding Risk}"
-                                       Style="{StaticResource EntryField}"/>
+                    <!-- Risk Entry -->
+                    <VerticalStackLayout Grid.Row="2"
+                                         Grid.Column="0">
+                        <Label Style="{StaticResource SubHeadline}"
+                               Text="Risk %"/>
+                        <Border Style="{StaticResource SectionBorder}">
+                            <Entry Style="{StaticResource EntryField}"
+                                   Placeholder="Enter risk"
+                                   Text="{Binding Risk}"/>
+                        </Border>
+                    </VerticalStackLayout>
 
-                            </Border>
+                    <!-- Stop Loss -->
+                    <VerticalStackLayout Grid.Row="2"
+                                         Grid.Column="1">
+                        <Label Style="{StaticResource SubHeadline}"
+                               Text="Stop Loss (Pips)"/>
+                        <Border Style="{StaticResource SectionBorder}">
+                            <Entry Style="{StaticResource EntryField}"
+                                   Placeholder="Stop"
+                                   Text="{Binding StopLossInPips}"/>
+                        </Border>
 
-
-                            <!--Stop loss entry fields-->
-                            <Label Style="{StaticResource SubHeadline}"
-                                   Grid.Row="3"
-                                   Grid.Column="0"
-                                   Text="Stop Loss (Pips) :"/>
-
-                            <Border Grid.Row="3"
-                                    Grid.Column="1"
-                                    Style="{StaticResource EntryBorder}">
-
-                                <Entry Placeholder="Enter Stop Loss"
-                                       Text="{Binding StopLossInPips}"
-                                       Style="{StaticResource EntryField}"/>
-                            </Border>
-                        </Grid>
-                    </Border>
+                    </VerticalStackLayout>
                 </Grid>
+
             </Border>
 
             <!--Trade Details-->
             <Border Grid.Row="1"
-                    Stroke="Transparent">
+                    Style="{StaticResource SectionBorder}">
+
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                            Opacity="0.05"/>
+                </Border.Shadow>
                 <Grid RowDefinitions="0.2*,*"
                       RowSpacing="10">
                     <!--Section Heading-->
@@ -191,7 +179,8 @@
             <Border Grid.Row="2">
                 <Button Text="Calculate"
                         HeightRequest="40"
-                        WidthRequest="100"/>
+                        WidthRequest="100"
+                        Command="{Binding CalculateLotSizeCommand}"/>
             </Border>
 
         </Grid>
