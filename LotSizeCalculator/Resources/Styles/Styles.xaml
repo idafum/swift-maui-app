@@ -35,6 +35,18 @@
         </Style>
 
         <Style TargetType="Border"
+               x:Key="SectionBorder">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource D3}"/>
+                <Setter Property="Stroke"
+                        Value="{StaticResource D2}"/>
+                <Setter Property="StrokeThickness"
+                        Value="0.5"/>
+                <Setter Property="StrokeShape"
+                        Value="RoundRectangle 8"/>
+        </Style>
+
+        <Style TargetType="Border"
                x:Key="EntryBorder">
                 <Setter Property="Stroke"
                         Value="Black"/>
@@ -76,6 +88,9 @@
 
                 <Setter Property="Keyboard"
                         Value="Numeric"/>
+
+                <Setter Property="FontFamily"
+                        Value="Medium"/>
         </Style>
 
         <Style TargetType="BoxView">
@@ -318,13 +333,10 @@
                 <Setter Property="TextColor"
                         Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}"/>
                 <Setter Property="FontSize"
-                        Value="14"/>
+                        Value="15"/>
                 <Setter Property="FontFamily"
-                        Value="Medium"/>
-                <Setter Property="HorizontalOptions"
-                        Value="Start"/>
-                <Setter Property="VerticalOptions"
-                        Value="Center"/>
+                        Value="Light"/>
+
         </Style>
 
         <Style TargetType="ListView">

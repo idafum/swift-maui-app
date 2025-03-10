@@ -15,9 +15,13 @@ public partial class CalculatorViewModel : ObservableObject
 {
 
     public ObservableCollection<Currency> Currencies { get; set; } = [];
+    public ObservableCollection<string> Pairs { get; set; } = [];
 
     [ObservableProperty]
     Currency selectedCurrency; //This property should be initialized
+
+    [ObservableProperty]
+    string selectedPair = "";
 
     [ObservableProperty]
     double accountBalance;
@@ -31,12 +35,23 @@ public partial class CalculatorViewModel : ObservableObject
     [ObservableProperty]
     double stopLossInPips;
 
+    //Validation Flags for Image Display
+    [ObservableProperty] private string acountBalanceValidationImage;
+    [ObservableProperty] private string riskValidationImage;
+    [ObservableProperty] private string stopLossValidationImage;
+    [ObservableProperty] private string pairValidationImage;
+    [ObservableProperty] private string tradeTypeValidationImage;
+
     public CalculatorViewModel()
     {
         InitCurrencies();
+        InitPairs();
         SelectedCurrency = new();
     }
 
+    /// <summary>
+    /// Initialize the supported currencies and the flags
+    /// </summary>
     public void InitCurrencies()
     {
         Currencies.Add(new Currency { Code = "USD", Flag = "usd.png" });
@@ -45,6 +60,17 @@ public partial class CalculatorViewModel : ObservableObject
         Currencies.Add(new Currency { Code = "AUD", Flag = "aud.png" });
         Currencies.Add(new Currency { Code = "JPY", Flag = "jpy.png" });
         Currencies.Add(new Currency { Code = "CHF", Flag = "chf.png" });
+    }
+
+    /// <summary>
+    /// Initialize the supported pairs
+    /// </summary>
+    public void InitPairs()
+    {
+        Pairs.Add("EURUSD");
+        Pairs.Add("GBPUSD");
+        Pairs.Add("AUDUSD");
+        Pairs.Add("NZDUSD");
     }
 
     /// <summary>
@@ -62,12 +88,12 @@ public partial class CalculatorViewModel : ObservableObject
         CultureInfo parseCulture = oldCulture ?? SelectedCurrency.GetCulture(); //Use Old Culture if provided, otherwise use new culture
         CultureInfo newCulture = SelectedCurrency.GetCulture();
 
+        //Try Parse
         if (double.TryParse(FormattedBalance, NumberStyles.Currency, parseCulture, out double amount) ||
             double.TryParse(FormattedBalance, NumberStyles.Number, CultureInfo.InvariantCulture, out amount))
         {
             AccountBalance = amount;
             FormattedBalance = amount.ToString("C", newCulture);
-            Debug.WriteLine($"Account Balance: {AccountBalance}, Formatted Balance: {FormattedBalance}");
         }
         else
         {
@@ -75,6 +101,21 @@ public partial class CalculatorViewModel : ObservableObject
         }
 
     }
+
+    [RelayCommand]
+    private void CalculateLotSize()
+    {
+
+
+    }
+
+
+
+    /// <summary>
+    /// Execut the FormatBalanceCommand when currency is changed.
+    /// </summary>
+    /// <param name="oldValue"></param>
+    /// <param name="newValue"></param>
     partial void OnSelectedCurrencyChanged(Currency? oldValue, Currency newValue)
     {
         if (newValue != null && oldValue != null)
