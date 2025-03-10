@@ -13,11 +13,11 @@
              HideSoftInputOnTapped="True"
              x:Name="Page">
 
-    <Border Margin="30"
+    <Border Margin="10"
             Stroke="Transparent"
             StrokeShape="RoundRectangle 10,10,10,10">
 
-        <Grid RowDefinitions="*,*,*"
+        <Grid RowDefinitions="Auto,Auto,*"
               RowSpacing="10"
               Padding="5">
 
@@ -119,72 +119,49 @@
                     <Shadow Brush="Black"
                             Opacity="0.05"/>
                 </Border.Shadow>
-                <Grid RowDefinitions="0.2*,*"
-                      RowSpacing="10">
-                    <!--Section Heading-->
-                    <Label Grid.Row="0"
-                           Text="Trade Details"
-                           Style="{StaticResource Headline}"/>
 
-                    <!--Section Border 1-->
-                    <Border Grid.Row="1"
-                            StrokeShape="RoundRectangle 10"
-                            Stroke="Transparent">
+                <Grid ColumnDefinitions="*,*"
+                      Padding="10"
+                      RowSpacing="15"
+                      ColumnSpacing="15">
 
-                        <!--3*3 Grid-->
-                        <Grid RowDefinitions="*,*,*,*"
-                              ColumnDefinitions="0.65*,*,0.25*"
-                              ColumnSpacing="5">
+                    <!-- Pair -->
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Style="{StaticResource SubHeadline}"
+                               Text="Pair"/>
 
-                            <!-- Pair-->
-                            <Label Style="{StaticResource SubHeadline}"
-                                   Grid.Row="0"
-                                   Grid.Column="0"
-                                   Text="Pair :"/>
+                        <Border Style="{StaticResource SectionBorder}">
+                            <Picker x:Name="PairPicker"
+                                    Title="select pair"
+                                    ItemsSource="{Binding Pairs}"
+                                    SelectedItem="{Binding SelectedPair}"
+                                    FontFamily="Bold"/>
+                        </Border>
+                    </VerticalStackLayout>
 
-                            <Border Grid.Row="0"
-                                    Grid.Column="1"
-                                    Style="{StaticResource EntryBorder}">
-                                <Picker x:Name="PairPicker"
-                                        Title="select pair"
-                                        ItemsSource="{Binding Pairs}"
-                                        SelectedItem="{Binding SelectedPair}"
-                                        FontFamily="Bold"/>
-                            </Border>
+                    <!-- Action -->
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Style="{StaticResource SubHeadline}"
+                               Text="Action"/>
+                        <HorizontalStackLayout>
+                            <RadioButton Content="Buy"/>
+                            <RadioButton Content="Sell"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
 
-                            <!-- Trade Type Entry-->
-                            <Label Style="{StaticResource SubHeadline}"
-                                   Grid.Row="1"
-                                   Grid.Column="0"
-                                   Text="Type :"/>
-
-                            <Border Grid.Row="1"
-                                    Grid.Column="1"
-                                    Margin="5"
-                                    Stroke="Transparent">
-                                <HorizontalStackLayout>
-                                    <RadioButton Content="Buy"/>
-                                    <RadioButton Content="Sell"/>
-                                </HorizontalStackLayout>
-
-                            </Border>
-                        </Grid>
-                        <!--Fields-->
-                    </Border>
                 </Grid>
+
             </Border>
 
-
-            <!--Calculate-->
             <Border Grid.Row="2">
                 <Button Text="Calculate"
                         HeightRequest="40"
                         WidthRequest="100"
                         Command="{Binding CalculateLotSizeCommand}"/>
             </Border>
-
         </Grid>
     </Border>
+
 
 
 </ContentPage>
