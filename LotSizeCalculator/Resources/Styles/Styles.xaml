@@ -37,7 +37,7 @@
         <Style TargetType="Border"
                x:Key="SectionBorder">
                 <Setter Property="BackgroundColor"
-                        Value="{StaticResource D3}"/>
+                        Value="Transparent"/>
                 <Setter Property="Stroke"
                         Value="{StaticResource D2}"/>
                 <Setter Property="StrokeThickness"
@@ -317,7 +317,7 @@
         <Style TargetType="Label"
                x:Key="Headline">
                 <Setter Property="TextColor"
-                        Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}"/>
+                        Value="Beige"/>
                 <Setter Property="FontSize"
                         Value="25"/>
                 <Setter Property="FontFamily"
@@ -331,11 +331,11 @@
         <Style TargetType="Label"
                x:Key="SubHeadline">
                 <Setter Property="TextColor"
-                        Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}"/>
+                        Value="Black"/>
                 <Setter Property="FontSize"
                         Value="15"/>
                 <Setter Property="FontFamily"
-                        Value="Light"/>
+                        Value="Bold"/>
 
         </Style>
 
