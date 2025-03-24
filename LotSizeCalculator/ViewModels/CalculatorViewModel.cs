@@ -5,9 +5,11 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
+using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LotSizeCalculator.Models;
+using SensorKit;
 
 namespace LotSizeCalculator.ViewModels;
 
@@ -42,8 +44,10 @@ public partial class CalculatorViewModel : ObservableObject
     [ObservableProperty] private string pairValidationImage;
     [ObservableProperty] private string tradeTypeValidationImage;
 
-    public CalculatorViewModel()
+    private readonly IPopupService popupService;
+    public CalculatorViewModel(IPopupService popupService) //DI
     {
+        this.popupService = popupService;
         InitCurrencies();
         InitPairs();
         SelectedCurrency = new();
@@ -105,8 +109,38 @@ public partial class CalculatorViewModel : ObservableObject
     [RelayCommand]
     private void CalculateLotSize()
     {
+        //Verify User Input
 
+        //Send verified Input to calculator
+        //Get calculator result
+        double result = LotSizeCalculator(AccountBalance, Risk, StopLossInPips);
+        Debug.WriteLine($"Lot Size is: {result}");
 
+        //Send result to popup and Display View.
+        //Display the popup
+        DisplayPopup(result);
+    }
+
+    /// <summary>
+    /// LotSizeCalculator
+    /// 
+    /// Calculates the LotSize based on User Input
+    /// </summary>
+    /// <param name="accountBalance">User Entered account balance</param>
+    /// <param name="risk">User Entered Risk </param>
+    /// <param name="stoploss">User Entered Stoploss</param>
+    /// <param name="pipValue">Optional paramter</param>
+    /// <returns>LotSize rounded to at most 2 decimal places</returns>
+    private double LotSizeCalculator(double accountBalance, double risk, double stoploss, double pipValue = 10)
+    {
+        double riskAmount = accountBalance * (risk / 100);
+        double lotSize = riskAmount / (pipValue * stoploss);
+        return Math.Round(lotSize, 2); //Round to 
+    }
+
+    public void DisplayPopup(double result)
+    {
+        this.popupService.ShowPopup<LotsResultPopupViewModel>(onPresenting: viewModel => viewModel.LotSize = result);
     }
 
 

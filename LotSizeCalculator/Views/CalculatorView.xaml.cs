@@ -12,15 +12,14 @@ namespace LotSizeCalculator.Views;
 public partial class CalculatorView : ContentPage
 {
     readonly CalculatorViewModel vm;
-    public CalculatorView()
+    public CalculatorView(CalculatorViewModel calculatorViewModel)
     {
         InitializeComponent();
-        vm = new CalculatorViewModel();
+        vm = calculatorViewModel;
         BindingContext = vm;
 
         //Default Currency selected always USD
         currencyPicker.SelectedIndex = 0;
-
     }
 
 }
