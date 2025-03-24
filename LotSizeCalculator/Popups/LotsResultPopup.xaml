@@ -7,7 +7,13 @@
     x:DataType="viewModels:LotsResultPopupViewModel">
 
 
-    <Label Text="{Binding LotSize}"
-           FontSize="30"/>
+    <Grid RowDefinitions="*,*">
+        <Label Grid.Row="0"
+               Text="{Binding LotSize}"
+               FontSize="30"/>
+
+        <Label Grid.Row="1"
+               Text="Remember to Risk2"/>
+    </Grid>
 
 </toolkit:Popup>
