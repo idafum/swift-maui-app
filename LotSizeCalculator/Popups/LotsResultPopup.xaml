@@ -6,6 +6,11 @@
     x:Class="LotSizeCalculator.Popups.LotsResultPopup"
     x:DataType="viewModels:LotsResultPopupViewModel">
 
+    <Grid RowDefinitions="*,*">
+
+
+
+    </Grid>
     <Label Text="Display Calculated LotSize"/>
 
 </toolkit:Popup>
