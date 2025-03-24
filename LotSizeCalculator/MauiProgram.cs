@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
+using LotSizeCalculator.Popups;
+using LotSizeCalculator.ViewModels;
+using LotSizeCalculator.Views;
 
 namespace LotSizeCalculator;
 public static class MauiProgram
@@ -21,6 +24,13 @@ public static class MauiProgram
 			fonts.AddFont("MPLUSRounded1c-Light.ttf", "Light");
 			fonts.AddFont("MPLUSRounded1c-Thin.ttf", "Thin");
 		}).UseMauiCommunityToolkit();
+
+		//Register the popup and view model with the builder
+		builder.Services.AddTransientPopup<LotsResultPopup, LotsResultPopupViewModel>();
+
+		builder.Services.AddSingleton<CalculatorViewModel>();
+		builder.Services.AddSingleton<CalculatorView>();
+
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif

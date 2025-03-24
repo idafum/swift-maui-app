@@ -5,6 +5,7 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
+using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LotSizeCalculator.Models;
@@ -42,8 +43,10 @@ public partial class CalculatorViewModel : ObservableObject
     [ObservableProperty] private string pairValidationImage;
     [ObservableProperty] private string tradeTypeValidationImage;
 
-    public CalculatorViewModel()
+    private readonly IPopupService popupService;
+    public CalculatorViewModel(IPopupService popupService) //DI
     {
+        this.popupService = popupService;
         InitCurrencies();
         InitPairs();
         SelectedCurrency = new();
@@ -105,8 +108,13 @@ public partial class CalculatorViewModel : ObservableObject
     [RelayCommand]
     private void CalculateLotSize()
     {
+        //Display the popup
+        DisplayPopup();
+    }
 
-
+    public void DisplayPopup()
+    {
+        this.popupService.ShowPopup<LotsResultPopupViewModel>();
     }
 
 
