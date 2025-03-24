@@ -4,9 +4,12 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace LotSizeCalculator.ViewModels;
 
-public class LotsResultPopupViewModel : ObservableObject
+public partial class LotsResultPopupViewModel : ObservableObject
 {
     readonly IPopupService popupService;
+
+    [ObservableProperty]
+    double lotSize;
 
     public LotsResultPopupViewModel(IPopupService popupService)
     {

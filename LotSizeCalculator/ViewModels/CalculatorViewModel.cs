@@ -118,7 +118,7 @@ public partial class CalculatorViewModel : ObservableObject
 
         //Send result to popup and Display View.
         //Display the popup
-        DisplayPopup();
+        DisplayPopup(result);
     }
 
     /// <summary>
@@ -138,9 +138,9 @@ public partial class CalculatorViewModel : ObservableObject
         return Math.Round(lotSize, 2); //Round to 
     }
 
-    public void DisplayPopup()
+    public void DisplayPopup(double result)
     {
-        this.popupService.ShowPopup<LotsResultPopupViewModel>();
+        this.popupService.ShowPopup<LotsResultPopupViewModel>(onPresenting: viewModel => viewModel.LotSize = result);
     }
 
 
