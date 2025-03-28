@@ -7,33 +7,45 @@ using LotSizeCalculator.Views;
 namespace LotSizeCalculator;
 public static class MauiProgram
 {
+	/// <summary>
+	/// CreateMauiApp
+	/// 
+	/// Use the MauiAppBuilder to configure and build an app
+	/// </summary>
+	/// <returns> A configured Maui App</returns>
 	public static MauiApp CreateMauiApp()
 	{
-		var builder = MauiApp.CreateBuilder();
-		builder.UseMauiApp<App>().ConfigureFonts(fonts =>
-		{
-			fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-			fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+		//MauiAppBuilder Instance. 
+		var mauiAppBuilder = MauiApp.CreateBuilder();
 
-			//MPLUSRounded1c Fonts
-			fonts.AddFont("MPLUSRounded1c-Black.ttf", "Black");
-			fonts.AddFont("MPLUSRounded1c-ExtraBold.ttf", "ExtraBold");
-			fonts.AddFont("MPLUSRounded1c-Bold.ttf", "Bold");
-			fonts.AddFont("MPLUSRounded1c-Medium.ttf", "Medium");
-			fonts.AddFont("MPLUSRounded1c-Regular.ttf", "Regular");
-			fonts.AddFont("MPLUSRounded1c-Light.ttf", "Light");
-			fonts.AddFont("MPLUSRounded1c-Thin.ttf", "Thin");
-		}).UseMauiCommunityToolkit();
+		//Use a specified "App". Configure the app fonts.
+		mauiAppBuilder.UseMauiApp<App>()
+			.ConfigureFonts(fonts =>
+			{
+				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+
+				//MPLUSRounded1c Fonts
+				fonts.AddFont("MPLUSRounded1c-Black.ttf", "Black");
+				fonts.AddFont("MPLUSRounded1c-ExtraBold.ttf", "ExtraBold");
+				fonts.AddFont("MPLUSRounded1c-Bold.ttf", "Bold");
+				fonts.AddFont("MPLUSRounded1c-Medium.ttf", "Medium");
+				fonts.AddFont("MPLUSRounded1c-Regular.ttf", "Regular");
+				fonts.AddFont("MPLUSRounded1c-Light.ttf", "Light");
+				fonts.AddFont("MPLUSRounded1c-Thin.ttf", "Thin");
+			})
+
+			.UseMauiCommunityToolkit();
 
 		//Register the popup and view model with the builder
-		builder.Services.AddTransientPopup<LotsResultPopup, LotsResultPopupViewModel>();
-
-		builder.Services.AddSingleton<CalculatorViewModel>();
-		builder.Services.AddSingleton<CalculatorView>();
+		mauiAppBuilder.Services.AddTransientPopup<LotsResultPopup, LotsResultPopupViewModel>();
+		mauiAppBuilder.Services.AddSingleton<CalculatorViewModel>();
+		mauiAppBuilder.Services.AddSingleton<CalculatorView>();
 
 #if DEBUG
-		builder.Logging.AddDebug();
+		mauiAppBuilder.Logging.AddDebug();
 #endif
-		return builder.Build();
+
+		return mauiAppBuilder.Build();
 	}
 }
