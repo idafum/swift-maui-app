@@ -9,9 +9,10 @@
              xmlns:model="clr-namespace:LotSizeCalculator.Models"
              xmlns:viewmodel="clr-namespace:LotSizeCalculator.ViewModels"
              x:DataType="viewmodel:CalculatorViewModel"
-             Title="Lot Size Calcuator"
+             Title="Risk2"
              HideSoftInputOnTapped="True"
              x:Name="Page">
+
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0"
                              EndPoint="0,1">
@@ -36,7 +37,7 @@
         <Grid RowDefinitions="0.05*,0.5*"
               Padding="5">
             <Label Grid.Row="0"
-                   Text="A Simple Lot Size Calculator"
+                   Text="Lot Size Calculator"
                    Padding="5"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
