@@ -5,6 +5,7 @@
 	- The MauiAppBuilder uses this as the specified app. 
 */
 using System.Diagnostics;
+using LotSizeCalculator.IntroFiles.Pages;
 
 namespace LotSizeCalculator;
 
@@ -29,7 +30,7 @@ public partial class App : Application
 		else
 		{
 			Debug.WriteLine("User has not seen Intro: Displaying now..");
-			return new Window(new AppShell());
+			return new Window(new NavigationPage(new FlashCardPage()));
 		}
 	}
 }
