@@ -7,9 +7,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace LotSizeCalculator.IntroFiles.ViewModels;
 
-partial class FlashcardsViewModel : ObservableObject
+partial class FlashCardViewModel : ObservableObject
 {
-    public FlashcardsViewModel()
+    public FlashCardViewModel()
     {
 
     }
