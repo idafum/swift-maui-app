@@ -1,15 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="456" height="456" viewBox="0 0 456 456" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <!-- Define the Linear Gradient -->
-        <linearGradient id="gradientBg" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#B0B0B0"/>  <!-- Light Grey at Very Top -->
-            <stop offset="25%" stop-color="#B0B0B0"/> <!-- Maintain Grey Until 25% -->
-            <stop offset="50%" stop-color="#404040"/> <!-- Smooth Transition Starts -->
-            <stop offset="100%" stop-color="#000000"/> <!-- Fully Black at the Bottom -->
-        </linearGradient>
-    </defs>
-
-    <!-- Rectangle with Gradient Fill -->
-    <rect x="0" y="0" width="456" height="456" fill="url(#gradientBg)" />
+<svg width="53" height="54" viewBox="0 0 53 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="26.4396" cy="26.5603" r="21.2483" fill="#FF0000" stroke="black" stroke-width="0.965831"/>
+<circle cx="26.1982" cy="27.2848" r="10.3827" fill="white" stroke="black" stroke-width="0.965831"/>
+<line x1="43.3417" y1="26.5604" x2="53" y2="26.5604" stroke="black" stroke-width="0.965831"/>
+<line x1="26.4396" y1="43.4624" x2="26.4396" y2="53.1207" stroke="black" stroke-width="0.965831"/>
+<line y1="26.0774" x2="9.65831" y2="26.0774" stroke="black" stroke-width="0.965831"/>
+<line x1="26.4396" x2="26.4396" y2="9.65831" stroke="black" stroke-width="0.965831"/>
+<circle cx="26.4396" cy="26.5604" r="1.44875" fill="black"/>
 </svg>
