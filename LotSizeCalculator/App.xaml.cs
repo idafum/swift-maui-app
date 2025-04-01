@@ -29,7 +29,7 @@ public partial class App : Application
 		else
 		{
 			Debug.WriteLine("User has not seen Intro: Displaying now..");
-			return new Window();
+			return new Window(new AppShell());
 		}
 	}
 }
