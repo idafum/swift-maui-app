@@ -1,0 +1,29 @@
+<svg width="169" height="169" viewBox="0 0 169 169" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="169" height="169" fill="white"/>
+<circle cx="99.8273" cy="71.9999" r="30.4" fill="#FF0000" stroke="black" stroke-width="1.38182"/>
+<circle cx="99.4818" cy="73.0364" r="14.8545" fill="white" stroke="black" stroke-width="1.38182"/>
+<line x1="124.009" y1="72" x2="137.827" y2="72" stroke="black" stroke-width="1.38182"/>
+<line x1="99.8273" y1="96.1818" x2="99.8273" y2="110" stroke="black" stroke-width="1.38182"/>
+<line x1="62" y1="71.3091" x2="75.8182" y2="71.3091" stroke="black" stroke-width="1.38182"/>
+<line x1="99.8273" y1="34" x2="99.8273" y2="47.8182" stroke="black" stroke-width="1.38182"/>
+<circle cx="99.8272" cy="72" r="2.07273" fill="black"/>
+<g filter="url(#filter0_f_40_312)">
+<path d="M30.5 58C30.5 56.6193 31.6193 55.5 33 55.5H83C84.3807 55.5 85.5 56.6193 85.5 58V132C85.5 133.381 84.3807 134.5 83 134.5H33C31.6193 134.5 30.5 133.381 30.5 132V58Z" fill="#A8A4A3" stroke="#767575"/>
+<rect x="34.5" y="58.5" width="48" height="21" rx="3.5" fill="#D9D9D9" stroke="#767575"/>
+<rect x="33.5" y="83.5" width="14" height="13" rx="3.5" fill="#D9D9D9" stroke="#767575"/>
+<rect x="33.5" y="100.5" width="14" height="13" rx="3.5" fill="#D9D9D9" stroke="#767575"/>
+<rect x="50.5" y="83.5" width="14" height="13" rx="3.5" fill="#D9D9D9" stroke="#767575"/>
+<rect x="50.5" y="100.5" width="14" height="13" rx="3.5" fill="#D9D9D9" stroke="#767575"/>
+<rect x="33.5" y="118.5" width="14" height="13" rx="3.5" fill="#D9D9D9" stroke="#767575"/>
+<rect x="67.5" y="83.5" width="14" height="13" rx="3.5" fill="#D9D9D9" stroke="#767575"/>
+<rect x="50.5" y="118.5" width="14" height="13" rx="3.5" fill="#D9D9D9" stroke="#767575"/>
+<rect x="67.5" y="100.5" width="14" height="30" rx="3.5" fill="#D9D9D9" stroke="#767575"/>
+</g>
+<defs>
+<filter id="filter0_f_40_312" x="29" y="54" width="58" height="82" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="0.5" result="effect1_foregroundBlur_40_312"/>
+</filter>
+</defs>
+</svg>

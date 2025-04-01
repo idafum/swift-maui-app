@@ -2,11 +2,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LotSizeCalculator.IntroFiles.Pages.FlashCardPage"
              Title="Risk2">
-    <StackLayout>
-        <Label Text="Welcome to Risk2"
-               VerticalOptions="Center"
-               HorizontalOptions="Center"/>
-        <!-- Other views go here -->
-    </StackLayout>
+    <Grid RowDefinitions="0.2*,0.5*,0.3*">
 
+        <Border Grid.Row="1"
+                Stroke="Black">
+        </Border>
+
+    </Grid>
 </ContentPage>

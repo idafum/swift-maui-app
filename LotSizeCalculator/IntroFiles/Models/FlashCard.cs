@@ -8,14 +8,15 @@ namespace LotSizeCalculator.IntroFiles.Models;
 
 public class FlashCard
 {
-    string image;
-    string title;
-    string subtitle;
+    //Automatic properties
+    public string Image { get; set; }
+    public string Title { get; set; }
+    public string Subtitle { get; set; }
 
-    public FlashCard(string Image, string Title, string Subtitle)
+    public FlashCard(string image, string title, string subtitle)
     {
-        image = Image;
-        title = Title;
-        subtitle = Subtitle;
+        Image = image;
+        Title = title;
+        Subtitle = subtitle;
     }
 }
