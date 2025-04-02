@@ -5,26 +5,49 @@
              xmlns:models="clr-namespace:LotSizeCalculator.IntroFiles.Models"
              x:DataType="viewmodel:FlashCardViewModel"
              Title="Risk2">
-    <Grid RowDefinitions="0.2*,0.5*,0.3*">
+    <Grid RowDefinitions="0.2*,0.5*,0.3*"
+          Margin="30"
+          ColumnDefinitions="*,*">
 
-        <Border Grid.Row="1"
-                Stroke="Black">
-            <CarouselView ItemsSource="{Binding FlashCards}">
-                <CarouselView.ItemTemplate>
-                    <DataTemplate x:DataType="models:FlashCard">
+        <CarouselView ItemsSource="{Binding FlashCards}"
+                      Grid.Row="1"
+                      Grid.ColumnSpan="2"
+                      IndicatorView="indicatorView"
+                      Loop="False"
+                      HorizontalScrollBarVisibility="Never">
+            <CarouselView.ItemTemplate>
+                <DataTemplate x:DataType="models:FlashCard">
+                    <Border Stroke="Transparent"
+                            StrokeShape="RoundRectangle 10,10,10,10">
                         <StackLayout>
-                            <Border>
-                                <StackLayout>
-                                    <Image Source="{Binding Image}"/>
-                                    <Label Text="{Binding Title}"/>
-                                    <Label Text="{Binding Subtitle}"/>
-                                </StackLayout>
-                            </Border>
+                            <Image Source="{Binding Image}"/>
+
+                            <Label Text="{Binding Title}"
+                                   FontFamily="ExtraBold"
+                                   FontSize="20"
+                                   HorizontalTextAlignment="Center"/>
+
+                            <Label Text="{Binding Subtitle}"
+                                   FontFamily="Regular"
+                                   FontSize="20"
+                                   LineBreakMode="WordWrap"
+                                   Padding="10"
+                                   HorizontalTextAlignment="Center"/>
+
                         </StackLayout>
-                    </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>
-        </Border>
+                    </Border>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <IndicatorView x:Name="indicatorView"
+                       Grid.Row="2"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
+                       IndicatorColor="#767575"
+                       SelectedIndicatorColor="Red"/>
+
+
 
     </Grid>
 </ContentPage>
