@@ -5,66 +5,99 @@
              xmlns:models="clr-namespace:LotSizeCalculator.IntroFiles.Models"
              x:DataType="viewmodel:FlashCardViewModel"
              Title="Risk2">
-    <Grid RowDefinitions="0.2*,0.5*,0.3*"
-          Margin="30"
+    <Grid RowDefinitions="0.1*,0.6*,0.1*,0.2*"
+          Padding="20"
           ColumnDefinitions="*,*">
 
-        <Border Grid.Row="1"
-                Grid.ColumnSpan="2">
-            <CarouselView ItemsSource="{Binding FlashCards}"
-                          IndicatorView="indicatorView"
-                          Loop="False"
-                          HorizontalScrollBarVisibility="Never"
-                          Position="{Binding CurrentIndex}">
+        <!-- Heading-->
+        <Border Grid.Row="0"
+                Grid.Column="0"
+                Stroke="Transparent">
+            <Grid>
+                <Image Source="risk_icon_name.png"
+                       WidthRequest="110"
+                       HeightRequest="50"
+                       HorizontalOptions="Start"/>
+            </Grid>
 
-                <CarouselView.ItemTemplate>
-                    <DataTemplate x:DataType="models:FlashCard">
-                        <Border Stroke="Transparent"
-                                StrokeShape="RoundRectangle 10,10,10,10">
-                            <StackLayout>
-                                <Image Source="{Binding Image}"/>
-
-                                <Label Text="{Binding Title}"
-                                       FontFamily="ExtraBold"
-                                       FontSize="20"
-                                       HorizontalTextAlignment="Center"/>
-
-                                <Label Text="{Binding Subtitle}"
-                                       FontFamily="Regular"
-                                       FontSize="20"
-                                       LineBreakMode="WordWrap"
-                                       Padding="10"
-                                       HorizontalTextAlignment="Center"/>
-
-                            </StackLayout>
-                        </Border>
-                    </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>
         </Border>
 
+        <!--FlashCard-->
+
+
+        <CarouselView ItemsSource="{Binding FlashCards}"
+                      IndicatorView="indicatorView"
+                      Loop="False"
+                      HorizontalScrollBarVisibility="Never"
+                      Position="{Binding CurrentIndex}"
+                      Grid.Row="1"
+                      Grid.ColumnSpan="2"
+                      Margin="30">
+
+            <CarouselView.ItemTemplate>
+                <DataTemplate x:DataType="models:FlashCard">
+
+                    <Border Stroke="Transparent"
+                            StrokeShape="RoundRectangle 10,10,10,10">
+                        <StackLayout VerticalOptions="Center">
+                            <Image Source="{Binding Image}"/>
+
+                            <Label Text="{Binding Title}"
+                                   FontFamily="ExtraBold"
+                                   FontSize="20"
+                                   HorizontalTextAlignment="Center"/>
+
+                            <Label Text="{Binding Subtitle}"
+                                   FontFamily="Regular"
+                                   FontSize="20"
+                                   LineBreakMode="WordWrap"
+                                   Padding="10"
+                                   HorizontalTextAlignment="Center"/>
+
+                        </StackLayout>
+                    </Border>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+
+        <!--Indicator and Start-->
         <Border Grid.Row="2"
-                Grid.Column="0">
+                Grid.Column="0"
+                Stroke="Transparent">
             <IndicatorView x:Name="indicatorView"
-                           Grid.Row="2"
-                           VerticalOptions="Start"
-                           HorizontalOptions="Start"
                            IndicatorColor="#767575"
-                           SelectedIndicatorColor="Red"/>
+                           SelectedIndicatorColor="Red"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Start"/>
         </Border>
 
         <Border Grid.Row="2"
-                Grid.Column="1">
+                Grid.Column="1"
+                Stroke="Transparent">
             <Button Text="Start"
+                    FontFamily="Bold"
                     WidthRequest="80"
                     HeightRequest="20"
-                    VerticalOptions="Start"
+                    VerticalOptions="Center"
                     HorizontalOptions="End"
                     Margin="10"
                     IsVisible="{Binding Start}"
                     BorderColor="Black"
                     BorderWidth="1"
                     BackgroundColor="#FF429451"/>
+        </Border>
+
+        <!--Footer-->
+        <Border Grid.Row="3"
+                Grid.ColumnSpan="2"
+                Stroke="Transparent">
+
+            <Label Text="App by Swift"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End"
+                   FontFamily="Regular"/>
+
         </Border>
 
 
