@@ -9,45 +9,64 @@
           Margin="30"
           ColumnDefinitions="*,*">
 
-        <CarouselView ItemsSource="{Binding FlashCards}"
-                      Grid.Row="1"
-                      Grid.ColumnSpan="2"
-                      IndicatorView="indicatorView"
-                      Loop="False"
-                      HorizontalScrollBarVisibility="Never"
-                      Position="{Binding CurrentIndex}">
+        <Border Grid.Row="1"
+                Grid.ColumnSpan="2">
+            <CarouselView ItemsSource="{Binding FlashCards}"
+                          IndicatorView="indicatorView"
+                          Loop="False"
+                          HorizontalScrollBarVisibility="Never"
+                          Position="{Binding CurrentIndex}">
 
-            <CarouselView.ItemTemplate>
-                <DataTemplate x:DataType="models:FlashCard">
-                    <Border Stroke="Transparent"
-                            StrokeShape="RoundRectangle 10,10,10,10">
-                        <StackLayout>
-                            <Image Source="{Binding Image}"/>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate x:DataType="models:FlashCard">
+                        <Border Stroke="Transparent"
+                                StrokeShape="RoundRectangle 10,10,10,10">
+                            <StackLayout>
+                                <Image Source="{Binding Image}"/>
 
-                            <Label Text="{Binding Title}"
-                                   FontFamily="ExtraBold"
-                                   FontSize="20"
-                                   HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding Title}"
+                                       FontFamily="ExtraBold"
+                                       FontSize="20"
+                                       HorizontalTextAlignment="Center"/>
 
-                            <Label Text="{Binding Subtitle}"
-                                   FontFamily="Regular"
-                                   FontSize="20"
-                                   LineBreakMode="WordWrap"
-                                   Padding="10"
-                                   HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding Subtitle}"
+                                       FontFamily="Regular"
+                                       FontSize="20"
+                                       LineBreakMode="WordWrap"
+                                       Padding="10"
+                                       HorizontalTextAlignment="Center"/>
 
-                        </StackLayout>
-                    </Border>
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>
+                            </StackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </Border>
 
-        <IndicatorView x:Name="indicatorView"
-                       Grid.Row="2"
-                       VerticalOptions="Start"
-                       HorizontalOptions="Start"
-                       IndicatorColor="#767575"
-                       SelectedIndicatorColor="Red"/>
+        <Border Grid.Row="2"
+                Grid.Column="0">
+            <IndicatorView x:Name="indicatorView"
+                           Grid.Row="2"
+                           VerticalOptions="Start"
+                           HorizontalOptions="Start"
+                           IndicatorColor="#767575"
+                           SelectedIndicatorColor="Red"/>
+        </Border>
+
+        <Border Grid.Row="2"
+                Grid.Column="1">
+            <Button Text="Start"
+                    WidthRequest="80"
+                    HeightRequest="20"
+                    VerticalOptions="Start"
+                    HorizontalOptions="End"
+                    Margin="10"
+                    IsVisible="{Binding Start}"
+                    BorderColor="Black"
+                    BorderWidth="1"
+                    BackgroundColor="#FF429451"/>
+        </Border>
+
 
 
 

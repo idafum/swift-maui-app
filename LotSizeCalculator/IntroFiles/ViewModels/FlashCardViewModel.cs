@@ -18,6 +18,9 @@ partial class FlashCardViewModel : ObservableObject
     [ObservableProperty]
     private int currentIndex;
 
+    [ObservableProperty]
+    public bool start;
+
     /// <summary>
     /// OnCurrentIndexChanged
     /// 
@@ -29,16 +32,24 @@ partial class FlashCardViewModel : ObservableObject
     {
         if (value == FlashCards.Count - 1)
         {
+
             Debug.WriteLine($"Now Displaying last flashcard:{value}");
 
             //TODO
+            //Display the start button
+            Start = true;
             //Add logic to navigate to app shell window.
+        }
+        else
+        {
+            Start = false;
         }
     }
 
     public FlashCardViewModel()
     {
         Populator();
+        Start = false;
     }
 
     /// <summary>
