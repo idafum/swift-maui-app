@@ -14,7 +14,9 @@
                       Grid.ColumnSpan="2"
                       IndicatorView="indicatorView"
                       Loop="False"
-                      HorizontalScrollBarVisibility="Never">
+                      HorizontalScrollBarVisibility="Never"
+                      Position="{Binding CurrentIndex}">
+
             <CarouselView.ItemTemplate>
                 <DataTemplate x:DataType="models:FlashCard">
                     <Border Stroke="Transparent"
