@@ -5,19 +5,19 @@
              xmlns:models="clr-namespace:LotSizeCalculator.IntroFiles.Models"
              x:DataType="viewmodel:FlashCardViewModel"
              Title="Risk2">
-    <Grid RowDefinitions="0.1*,0.6*,0.1*,0.2*"
+    <Grid RowDefinitions="0.05*,0.6*,0.15*,0.2*"
           Padding="20"
           ColumnDefinitions="*,*">
 
         <!-- Heading-->
         <Border Grid.Row="0"
-                Grid.Column="0"
+                Grid.ColumnSpan="2"
                 Stroke="Transparent">
             <Grid>
                 <Image Source="risk_icon_name.png"
                        WidthRequest="110"
                        HeightRequest="50"
-                       HorizontalOptions="Start"/>
+                       HorizontalOptions="Center"/>
             </Grid>
 
         </Border>
@@ -85,7 +85,8 @@
                     IsVisible="{Binding Start}"
                     BorderColor="Black"
                     BorderWidth="1"
-                    BackgroundColor="#FF429451"/>
+                    BackgroundColor="#FF429451"
+                    Clicked="OnStartClicked"/>
         </Border>
 
         <!--Footer-->

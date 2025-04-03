@@ -30,7 +30,7 @@ public partial class App : Application
 		else
 		{
 			Debug.WriteLine("User has not seen Intro: Displaying now..");
-			return new Window(new NavigationPage(new FlashCardPage()));
+			return new Window(new FlashCardPage());
 		}
 	}
 }
