@@ -12,4 +12,12 @@ partial class FlashCardPage : ContentPage
         InitializeComponent();
         BindingContext = new FlashCardViewModel();
     }
+
+    void OnStartClicked(object sender, EventArgs args)
+    {
+        //Navigate to the app shell
+        Application.Current.Windows[0].Page = new AppShell();
+
+        Preferences.Set("HasSeenIntro", true);
+    }
 }
