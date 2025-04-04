@@ -16,7 +16,7 @@ public partial class App : Application
 		InitializeComponent();
 
 		//For Development testing
-		//Preferences.Remove("HasSeenIntro");
+		Preferences.Remove("HasSeenIntro");
 	}
 
 	protected override Window CreateWindow(IActivationState? activationState)
