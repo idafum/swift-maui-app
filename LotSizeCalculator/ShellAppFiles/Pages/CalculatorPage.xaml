@@ -2,6 +2,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LotSizeCalculator.ShellAppFiles.Pages.CalculatorPage">
 
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="0,1">
+            <GradientStop Color="#B0B0B0"
+                          Offset="0.0"/>
+            <!-- Light Grey at the Top -->
+            <GradientStop Color="#B0B0B0"
+                          Offset="0.25"/>
+            <!-- Maintain Grey Until 25% -->
+            <GradientStop Color="#404040"
+                          Offset="0.50"/>
+            <!-- Transition to Dark Grey -->
+            <GradientStop Color="#000000"
+                          Offset="1.0"/>
+            <!-- Black at the Bottom -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
     <StackLayout>
         <Label Text="This is the CalcualtorPage"
                TextColor="Black"/>
