@@ -5,6 +5,24 @@
              xmlns:models="clr-namespace:LotSizeCalculator.IntroFiles.Models"
              x:DataType="viewmodel:FlashCardViewModel"
              Title="Risk2">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="0,1">
+            <GradientStop Color="#B0B0B0"
+                          Offset="0.0"/>
+            <!-- Light Grey at the Top -->
+            <GradientStop Color="#B0B0B0"
+                          Offset="0.25"/>
+            <!-- Maintain Grey Until 25% -->
+            <GradientStop Color="#404040"
+                          Offset="0.50"/>
+            <!-- Transition to Dark Grey -->
+            <GradientStop Color="#000000"
+                          Offset="1.0"/>
+            <!-- Black at the Bottom -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
     <Grid RowDefinitions="0.05*,0.6*,0.15*,0.2*"
           Padding="20"
           ColumnDefinitions="*,*">
@@ -23,8 +41,6 @@
         </Border>
 
         <!--FlashCard-->
-
-
         <CarouselView ItemsSource="{Binding FlashCards}"
                       IndicatorView="indicatorView"
                       Loop="False"
@@ -32,13 +48,18 @@
                       Position="{Binding CurrentIndex}"
                       Grid.Row="1"
                       Grid.ColumnSpan="2"
-                      Margin="30">
-
+                      Margin="60">
+            <CarouselView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"
+                                   ItemSpacing="50"/>
+            </CarouselView.ItemsLayout>
             <CarouselView.ItemTemplate>
                 <DataTemplate x:DataType="models:FlashCard">
 
                     <Border Stroke="Transparent"
-                            StrokeShape="RoundRectangle 10,10,10,10">
+                            StrokeThickness="1"
+                            Background="#B0B0B0"
+                            StrokeShape="RoundRectangle 20,20,20,20">
                         <StackLayout VerticalOptions="Center">
                             <Image Source="{Binding Image}"/>
 
@@ -51,7 +72,7 @@
                                    FontFamily="Regular"
                                    FontSize="20"
                                    LineBreakMode="WordWrap"
-                                   Padding="10"
+                                   Padding="5"
                                    HorizontalTextAlignment="Center"/>
 
                         </StackLayout>
@@ -95,6 +116,7 @@
                 Stroke="Transparent">
 
             <Label Text="App by Swift"
+                   TextColor="White"
                    HorizontalOptions="Center"
                    VerticalOptions="End"
                    FontFamily="Regular"/>
