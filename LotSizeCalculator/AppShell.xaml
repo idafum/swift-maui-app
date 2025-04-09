@@ -6,10 +6,12 @@
     xmlns:pages="clr-namespace:LotSizeCalculator.ShellAppFiles.Pages">
 
     <TabBar>
-        <Tab Title="Calculator">
+        <Tab Title="Calculator"
+             Icon="risk_calculator_small.png">
             <ShellContent ContentTemplate="{DataTemplate pages:CalculatorPage}"/>
         </Tab>
-        <Tab Title="Info">
+        <Tab Title="Info"
+             Icon="risk_info.png">
             <ShellContent ContentTemplate="{DataTemplate pages:InfoPage}"/>
         </Tab>
     </TabBar>
