@@ -5,16 +5,34 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:LotSizeCalculator.ShellAppFiles.Pages">
 
-    <TabBar Shell.TabBarTitleColor="White"
-            Shell.TabBarForegroundColor="Red">
-        <Tab Title="Calculator"
-             Icon="risk_calculator_small.png">
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="0.2*, 0.8*">
+                <Image Source="{Binding FlyoutIcon}"
+                       Margin="5"
+                       HeightRequest="70"
+                       WidthRequest="70"/>
+
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       FontFamily="Regular"
+                       VerticalTextAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <FlyoutItem Title="Calculator"
+                Icon="risk_calculator.png">
+        <Tab>
             <ShellContent ContentTemplate="{DataTemplate pages:CalculatorPage}"/>
         </Tab>
-        <Tab Title="Info"
-             Icon="risk_info.png">
+    </FlyoutItem>
+
+    <FlyoutItem Title="Info"
+                Icon="risk_info.png">
+        <Tab>
             <ShellContent ContentTemplate="{DataTemplate pages:InfoPage}"/>
         </Tab>
-    </TabBar>
+    </FlyoutItem>
 
 </Shell>

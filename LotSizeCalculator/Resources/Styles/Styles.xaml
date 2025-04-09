@@ -291,7 +291,7 @@
                 <Setter Property="BackgroundColor"
                         Value="Transparent"/>
                 <Setter Property="FontFamily"
-                        Value="mainfont"/>
+                        Value="Regular"/>
                 <Setter Property="FontSize"
                         Value="14"/>
                 <Setter Property="VisualStateManager.VisualStateGroups">
