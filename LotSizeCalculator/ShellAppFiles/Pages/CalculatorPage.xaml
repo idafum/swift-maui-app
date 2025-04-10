@@ -1,6 +1,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LotSizeCalculator.ShellAppFiles.Pages.CalculatorPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:LotSizeCalculator.ShellAppFiles.ViewModels"
+             x:DataType="viewmodel:CalculatorViewModel"
+             HideSoftInputOnTapped="True"
              Title="Risk 2"
              Shell.PresentationMode="Animated"
              Shell.NavBarHasShadow="true"
@@ -29,6 +33,60 @@
                 Background="#B0B0B0"
                 StrokeShape="RoundRectangle 20,20,20,20"
                 Margin="50">
+            <Grid RowDefinitions="*,*,*,*,*,*,*"
+                  ColumnDefinitions="*,*"
+                  Padding="10">
+
+                <!--Currency Entry -->
+                <VerticalStackLayout Grid.Row="1"
+                                     Grid.Column="0"
+                                     Spacing="5"
+                                     VerticalOptions="Center">
+                    <Label Style="{StaticResource SubHeadline}"
+                           Text="Currency"/>
+
+                    <Grid ColumnDefinitions="*,*">
+                        <Border Style="{StaticResource SectionBorder}">
+                            <Picker x:Name="currencyPicker"
+                                    Title="select currency"
+                                    ItemsSource="{Binding Currencies}"
+                                    ItemDisplayBinding="{Binding Code}"
+                                    SelectedItem="{Binding SelectedCurrency}"
+                                    FontFamily="Medium"/>
+                        </Border>
+
+                        <Image Grid.Column="1"
+                               Source="{Binding SelectedCurrency.Flag}"
+                               HeightRequest="25"
+                               WidthRequest="25"/>
+                    </Grid>
+                </VerticalStackLayout>
+
+                <!--Account Balance Entry-->
+                <VerticalStackLayout Grid.Row="1"
+                                     Grid.Column="1"
+                                     VerticalOptions="Center">
+                    <Label Style="{StaticResource SubHeadline}"
+                           Text="Account Balance"/>
+
+                    <Border Style="{StaticResource SectionBorder}">
+                        <Entry x:Name="AccountBalanceEntry"
+                               Placeholder="Enter amount"
+                               Text="{Binding FormattedBalance}"
+                               Style="{StaticResource EntryField}">
+
+                            <Entry.Behaviors>
+                                <toolkit:EventToCommandBehavior
+                                    EventName="Unfocused"
+                                    BindingContext="{Binding Path=BindingContext, Source={x:Reference AccountBalanceEntry}, x:DataType=Entry}"
+                                    Command="{Binding FormatBalanceCommand}"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Border>
+                </VerticalStackLayout>
+
+
+            </Grid>
 
         </Border>
     </Grid>
