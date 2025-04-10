@@ -33,9 +33,10 @@
                 Background="#B0B0B0"
                 StrokeShape="RoundRectangle 20,20,20,20"
                 Margin="50">
-            <Grid RowDefinitions="*,*,*,*,*,*,*"
+            <Grid RowDefinitions="0.1*,*,*,*,*,*,*"
                   ColumnDefinitions="*,*"
-                  Padding="10">
+                  Padding="10"
+                  ColumnSpacing="10">
 
                 <!--Currency Entry -->
                 <VerticalStackLayout Grid.Row="1"
@@ -84,6 +85,8 @@
                         </Entry>
                     </Border>
                 </VerticalStackLayout>
+
+                <!--Risk Entry -->
 
 
             </Grid>
