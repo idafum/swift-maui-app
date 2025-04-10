@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:LotSizeCalculator.ShellAppFiles.Pages"
+    xmlns:views="clr-namespace:LotSizeCalculator.Views"
     xmlns:local="clr-namespace:LotSizeCalculator"
     FlyoutWidth="250">
 
@@ -92,7 +93,7 @@
     <FlyoutItem Title="Calculator"
                 Icon="risk_calculator.png">
         <Tab>
-            <ShellContent ContentTemplate="{DataTemplate pages:CalculatorPage}"/>
+            <ShellContent ContentTemplate="{DataTemplate views:CalculatorView}"/>
         </Tab>
     </FlyoutItem>
 
