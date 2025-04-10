@@ -1,10 +1,97 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LotSizeCalculator.ShellAppFiles.Pages.CalculatorPage">
+             x:Class="LotSizeCalculator.ShellAppFiles.Pages.CalculatorPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:LotSizeCalculator.ShellAppFiles.ViewModels"
+             x:DataType="viewmodel:CalculatorViewModel"
+             HideSoftInputOnTapped="True"
+             Title="Risk 2"
+             Shell.PresentationMode="Animated"
+             Shell.NavBarHasShadow="true"
+             Shell.BackgroundColor="#B0B0B0">
 
-    <StackLayout>
-        <Label Text="This is the CalcualtorPage"
-               TextColor="Black"/>
-    </StackLayout>
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="0,1">
+            <GradientStop Color="#B0B0B0"
+                          Offset="0.0"/>
+            <!-- Light Grey at the Top -->
+            <GradientStop Color="#B0B0B0"
+                          Offset="0.25"/>
+            <!-- Maintain Grey Until 25% -->
+            <GradientStop Color="#404040"
+                          Offset="0.50"/>
+            <!-- Transition to Dark Grey -->
+            <GradientStop Color="#000000"
+                          Offset="1.0"/>
+            <!-- Black at the Bottom -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid>
+        <Border Stroke="Transparent"
+                Background="#B0B0B0"
+                StrokeShape="RoundRectangle 20,20,20,20"
+                Margin="50">
+            <Grid RowDefinitions="0.1*,*,*,*,*,*,*"
+                  ColumnDefinitions="*,*"
+                  Padding="10"
+                  ColumnSpacing="10">
+
+                <!--Currency Entry -->
+                <VerticalStackLayout Grid.Row="1"
+                                     Grid.Column="0"
+                                     Spacing="5"
+                                     VerticalOptions="Center">
+                    <Label Style="{StaticResource SubHeadline}"
+                           Text="Currency"/>
+
+                    <Grid ColumnDefinitions="*,*">
+                        <Border Style="{StaticResource SectionBorder}">
+                            <Picker x:Name="currencyPicker"
+                                    Title="select currency"
+                                    ItemsSource="{Binding Currencies}"
+                                    ItemDisplayBinding="{Binding Code}"
+                                    SelectedItem="{Binding SelectedCurrency}"
+                                    FontFamily="Medium"/>
+                        </Border>
+
+                        <Image Grid.Column="1"
+                               Source="{Binding SelectedCurrency.Flag}"
+                               HeightRequest="25"
+                               WidthRequest="25"/>
+                    </Grid>
+                </VerticalStackLayout>
+
+                <!--Account Balance Entry-->
+                <VerticalStackLayout Grid.Row="1"
+                                     Grid.Column="1"
+                                     VerticalOptions="Center">
+                    <Label Style="{StaticResource SubHeadline}"
+                           Text="Account Balance"/>
+
+                    <Border Style="{StaticResource SectionBorder}">
+                        <Entry x:Name="AccountBalanceEntry"
+                               Placeholder="Enter amount"
+                               Text="{Binding FormattedBalance}"
+                               Style="{StaticResource EntryField}">
+
+                            <Entry.Behaviors>
+                                <toolkit:EventToCommandBehavior
+                                    EventName="Unfocused"
+                                    BindingContext="{Binding Path=BindingContext, Source={x:Reference AccountBalanceEntry}, x:DataType=Entry}"
+                                    Command="{Binding FormatBalanceCommand}"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!--Risk Entry -->
+
+
+            </Grid>
+
+        </Border>
+    </Grid>
 
 </ContentPage>

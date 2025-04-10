@@ -1,10 +1,36 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LotSizeCalculator.ShellAppFiles.Pages.InfoPage">
+             x:Class="LotSizeCalculator.ShellAppFiles.Pages.InfoPage"
+             Title="Risk 2"
+             Shell.PresentationMode="Animated"
+             Shell.NavBarHasShadow="True"
+             Shell.BackgroundColor="#B0B0B0">
 
-    <StackLayout>
-        <Label Text="This is the info Page"
-               TextColor="Black"/>
-    </StackLayout>
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="0,1">
+            <GradientStop Color="#B0B0B0"
+                          Offset="0.0"/>
+            <!-- Light Grey at the Top -->
+            <GradientStop Color="#B0B0B0"
+                          Offset="0.25"/>
+            <!-- Maintain Grey Until 25% -->
+            <GradientStop Color="#404040"
+                          Offset="0.50"/>
+            <!-- Transition to Dark Grey -->
+            <GradientStop Color="#000000"
+                          Offset="1.0"/>
+            <!-- Black at the Bottom -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid>
+        <Border Stroke="Transparent"
+                Background="#B0B0B0"
+                StrokeShape="RoundRectangle 20,20,20,20"
+                Margin="50">
+
+        </Border>
+    </Grid>
 
 </ContentPage>
