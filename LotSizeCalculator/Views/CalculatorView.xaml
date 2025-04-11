@@ -125,13 +125,7 @@
                         <!-- Stop Loss -->
                         <VerticalStackLayout Grid.Row="2"
                                              Grid.Column="1">
-                            <Label Style="{StaticResource SubHeadline}"
-                                   Text="Stop Loss (Pips)"/>
-                            <Border Style="{StaticResource SectionBorder}">
-                                <Entry Style="{StaticResource EntryField}"
-                                       Placeholder="Stop"
-                                       Text="{Binding StopLossInPips}"/>
-                            </Border>
+
 
                         </VerticalStackLayout>
                     </Grid>
@@ -158,8 +152,7 @@
                             <Label Style="{StaticResource SubHeadline}"
                                    Text="Pair"/>
 
-                            <Border Style="{StaticResource SectionBorder}"
-                                    BackgroundColor="{StaticResource D1}">
+                            <Border Style="{StaticResource SectionBorder}">
                                 <Picker x:Name="PairPicker"
                                         Title="select pair"
                                         ItemsSource="{Binding Pairs}"
