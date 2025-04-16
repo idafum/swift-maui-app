@@ -25,7 +25,7 @@
 		<ApplicationTitle>Risk2</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.Risk2</ApplicationId>
+		<ApplicationId>com.swift.Risk2</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

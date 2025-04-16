@@ -6,7 +6,7 @@
              x:DataType="viewmodel:CalculatorViewModel"
              HideSoftInputOnTapped="True"
              Title="Risk 2"
-             Shell.PresentationMode="Animated"
+             Shell.PresentationMode="ModalAnimated"
              Shell.NavBarHasShadow="true"
              Shell.BackgroundColor="#B0B0B0">
 
@@ -33,10 +33,19 @@
                 Background="#B0B0B0"
                 StrokeShape="RoundRectangle 20,20,20,20"
                 Margin="50">
-            <Grid RowDefinitions="0.1*,*,*,*,*,*,*"
+            <Grid RowDefinitions="0.1*,*,*,*,0.1*,*,*"
                   ColumnDefinitions="*,*"
                   Padding="10"
-                  ColumnSpacing="10">
+                  ColumnSpacing="10"
+                  RowSpacing="10">
+
+                <Button Grid.Column="1"
+                        Text="Reset"
+                        Margin="5"
+                        BackgroundColor="Black"
+                        FontFamily="Medium"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
 
                 <!--Currency Entry -->
                 <VerticalStackLayout Grid.Row="1"
@@ -47,13 +56,14 @@
                            Text="Currency"/>
 
                     <Grid ColumnDefinitions="*,*">
-                        <Border Style="{StaticResource SectionBorder}">
+                        <Border Style="{StaticResource SectionBorder}"
+                                BackgroundColor="{StaticResource D1}">
                             <Picker x:Name="currencyPicker"
                                     Title="select currency"
                                     ItemsSource="{Binding Currencies}"
                                     ItemDisplayBinding="{Binding Code}"
                                     SelectedItem="{Binding SelectedCurrency}"
-                                    FontFamily="Medium"/>
+                                    FontFamily="Bold"/>
                         </Border>
 
                         <Image Grid.Column="1"
@@ -87,6 +97,74 @@
                 </VerticalStackLayout>
 
                 <!--Risk Entry -->
+                <VerticalStackLayout Grid.Row="2"
+                                     Grid.Column="0"
+                                     VerticalOptions="Center">
+
+                    <Label Style="{StaticResource SubHeadline}"
+                           Text="Risk %"/>
+                    <Border Style="{StaticResource SectionBorder}">
+                        <Entry Style="{StaticResource EntryField}"
+                               Placeholder="Enter risk"
+                               Text="{Binding Risk}"/>
+                    </Border>
+
+                </VerticalStackLayout>
+
+                <!--Stop Loss-->
+                <VerticalStackLayout Grid.Row="3"
+                                     Grid.Column="0"
+                                     VerticalOptions="Center">
+                    <Label Style="{StaticResource SubHeadline}"
+                           Text="Stop Loss (Pips)"/>
+                    <Border Style="{StaticResource SectionBorder}">
+                        <Entry Style="{StaticResource EntryField}"
+                               Placeholder="Stop"
+                               Text="{Binding StopLossInPips}"/>
+                    </Border>
+                </VerticalStackLayout>
+
+                <BoxView Grid.Row="4"
+                         Grid.ColumnSpan="2"
+                         HeightRequest="2"
+                         CornerRadius="10"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Start"
+                         Color="Black"/>
+
+                <!-- Pair -->
+                <VerticalStackLayout Grid.Row="5"
+                                     Grid.Column="0"
+                                     VerticalOptions="Center">
+                    <Label Style="{StaticResource SubHeadline}"
+                           Text="Pair"/>
+
+                    <Border Style="{StaticResource SectionBorder}"
+                            BackgroundColor="{StaticResource D1}">
+                        <Picker x:Name="PairPicker"
+                                Title="select pair"
+                                ItemsSource="{Binding Pairs}"
+                                SelectedItem="{Binding SelectedPair}"
+                                FontFamily="Bold"/>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Action -->
+                <VerticalStackLayout Grid.Row="5"
+                                     Grid.Column="1"
+                                     VerticalOptions="Center">
+                    <Label Style="{StaticResource SubHeadline}"
+                           Text="Action"/>
+                    <HorizontalStackLayout RadioButtonGroup.GroupName="actions">
+                        <RadioButton Content="Buy"
+                                     GroupName="actions"
+                                     IsChecked="{Binding SelectedAction, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Buy}"/>
+
+                        <RadioButton Content="Sell"
+                                     GroupName="actions"
+                                     IsChecked="{Binding SelectedAction, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Sell}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
 
 
             </Grid>

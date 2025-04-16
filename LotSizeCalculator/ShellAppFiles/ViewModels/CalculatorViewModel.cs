@@ -26,6 +26,20 @@ partial class CalculatorViewModel : ObservableObject
     [ObservableProperty]
     double accountBalance;
 
+    [ObservableProperty]
+    double risk;
+
+    [ObservableProperty]
+    double stopLossInPips;
+
+    public ObservableCollection<string> Pairs { get; set; } = [];
+
+    [ObservableProperty]
+    string selectedPair = "";
+
+    [ObservableProperty]
+    public TradeAction selectedAction;
+
 
     public CalculatorViewModel()
     {
@@ -36,6 +50,12 @@ partial class CalculatorViewModel : ObservableObject
         Currencies.Add(new Currency { Code = "AUD", Flag = "aud.png" });
         Currencies.Add(new Currency { Code = "JPY", Flag = "jpy.png" });
         Currencies.Add(new Currency { Code = "CHF", Flag = "chf.png" });
+
+        //Setup Pairs
+        Pairs.Add("EURUSD");
+        Pairs.Add("GBPUSD");
+        Pairs.Add("AUDUSD");
+        Pairs.Add("NZDUSD");
 
         SelectedCurrency = new();
     }
