@@ -4,26 +4,11 @@
              xmlns:viewmodel="clr-namespace:LotSizeCalculator.IntroFiles.ViewModels"
              xmlns:models="clr-namespace:LotSizeCalculator.IntroFiles.Models"
              x:DataType="viewmodel:FlashCardViewModel"
-             Title="Risk2">
-    <ContentPage.Background>
-        <LinearGradientBrush StartPoint="0,0"
-                             EndPoint="0,1">
-            <GradientStop Color="#B0B0B0"
-                          Offset="0.0"/>
-            <!-- Light Grey at the Top -->
-            <GradientStop Color="#B0B0B0"
-                          Offset="0.25"/>
-            <!-- Maintain Grey Until 25% -->
-            <GradientStop Color="#404040"
-                          Offset="0.50"/>
-            <!-- Transition to Dark Grey -->
-            <GradientStop Color="#000000"
-                          Offset="1.0"/>
-            <!-- Black at the Bottom -->
-        </LinearGradientBrush>
-    </ContentPage.Background>
+             Title="Risk2"
+             BackgroundColor="white">
 
-    <Grid RowDefinitions="0.05*,0.6*,0.15*,0.2*"
+
+    <Grid RowDefinitions="0.05*,0.7*,0.15*,0.1*"
           Padding="20"
           ColumnDefinitions="*,*">
 
@@ -41,46 +26,71 @@
         </Border>
 
         <!--FlashCard-->
-        <CarouselView ItemsSource="{Binding FlashCards}"
-                      IndicatorView="indicatorView"
-                      Loop="False"
-                      HorizontalScrollBarVisibility="Never"
-                      Position="{Binding CurrentIndex}"
-                      Grid.Row="1"
-                      Grid.ColumnSpan="2"
-                      Margin="60">
-            <CarouselView.ItemsLayout>
-                <LinearItemsLayout Orientation="Horizontal"
-                                   ItemSpacing="50"/>
-            </CarouselView.ItemsLayout>
-            <CarouselView.ItemTemplate>
-                <DataTemplate x:DataType="models:FlashCard">
+        <Grid Grid.Row="1"
+              Grid.ColumnSpan="2"
+              RowDefinitions="0.9*,0.1*"
+              Padding="20"
+              RowSpacing="6">
 
-                    <Border Stroke="Transparent"
-                            StrokeThickness="1"
-                            Background="#B0B0B0"
-                            StrokeShape="RoundRectangle 20,20,20,20">
-                        <StackLayout VerticalOptions="Center">
-                            <Image Source="{Binding Image}"/>
+            <CarouselView Grid.Row="0"
+                          ItemsSource="{Binding FlashCards}"
+                          IndicatorView="indicatorView"
+                          Loop="False"
+                          HorizontalScrollBarVisibility="Never"
+                          Position="{Binding CurrentIndex}">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                                       ItemSpacing="50"/>
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate x:DataType="models:FlashCard">
 
-                            <Label Text="{Binding Title}"
-                                   FontFamily="ExtraBold"
-                                   FontSize="20"
-                                   HorizontalTextAlignment="Center"/>
+                        <Border
+                            StrokeThickness="3"
+                            Background="Transparent"
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            StrokeMiterLimit="50">
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                        Offset="0,30"
+                                        Radius="60"
+                                        Opacity="0.3"/>
+                            </Border.Shadow>
+                            <Border.Stroke>
+                                <LinearGradientBrush EndPoint="0,1">
+                                    <GradientStop Color="Black"
+                                                  Offset="0.1"/>
+                                    <GradientStop Color="Red"
+                                                  Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Stroke>
+                            <StackLayout VerticalOptions="Center">
+                                <Image Source="{Binding Image}"/>
 
-                            <Label Text="{Binding Subtitle}"
-                                   FontFamily="Regular"
-                                   FontSize="20"
-                                   LineBreakMode="WordWrap"
-                                   Padding="5"
-                                   HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding Title}"
+                                       FontFamily="ExtraBold"
+                                       FontSize="20"
+                                       HorizontalTextAlignment="Center"/>
 
-                        </StackLayout>
-                    </Border>
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>
+                                <Label Text="{Binding Subtitle}"
+                                       FontFamily="Regular"
+                                       FontSize="18"
+                                       LineBreakMode="WordWrap"
+                                       Padding="5"
+                                       HorizontalTextAlignment="Center"/>
 
+                            </StackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+
+            <Label Grid.Row="1"
+                   Text="Swipe flashcards ..."
+                   FontAttributes="Italic"
+                   FontFamily="Light"/>
+        </Grid>
 
         <!--Indicator and Start-->
         <Border Grid.Row="2"
