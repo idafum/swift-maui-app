@@ -22,7 +22,6 @@
                        HeightRequest="50"
                        HorizontalOptions="Center"/>
             </Grid>
-
         </Border>
 
         <!--FlashCard-->
@@ -68,11 +67,13 @@
                                 <Image Source="{Binding Image}"/>
 
                                 <Label Text="{Binding Title}"
+                                       TextColor="{AppThemeBinding Light=Black, Dark=Black}"
                                        FontFamily="ExtraBold"
                                        FontSize="20"
                                        HorizontalTextAlignment="Center"/>
 
                                 <Label Text="{Binding Subtitle}"
+                                       TextColor="{AppThemeBinding Light=Black, Dark=Black}"
                                        FontFamily="Regular"
                                        FontSize="18"
                                        LineBreakMode="WordWrap"
@@ -88,6 +89,7 @@
 
             <Label Grid.Row="1"
                    Text="Swipe flashcards ..."
+                   TextColor="{AppThemeBinding Light=Black,Dark=Black}"
                    FontAttributes="Italic"
                    FontFamily="Light"/>
         </Grid>
@@ -126,7 +128,7 @@
                 Stroke="Transparent">
 
             <Label Text="App by Swift"
-                   TextColor="White"
+                   TextColor="Black"
                    HorizontalOptions="Center"
                    VerticalOptions="End"
                    FontFamily="Regular"/>

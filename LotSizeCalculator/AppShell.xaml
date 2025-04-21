@@ -6,98 +6,86 @@
     xmlns:pages="clr-namespace:LotSizeCalculator.ShellAppFiles.Pages"
     xmlns:views="clr-namespace:LotSizeCalculator.Views"
     xmlns:local="clr-namespace:LotSizeCalculator"
-    FlyoutWidth="250">
+    FlyoutWidth="200"
+    FlyoutBackgroundColor="white">
 
-    <Shell.FlyoutBackground>
-        <LinearGradientBrush StartPoint="0,0"
-                             EndPoint="0,1">
-            <GradientStop Color="#FF8D8C8C"
-                          Offset="0.0"/>
-            <!-- Light Grey at the Top -->
-            <GradientStop Color="Black"
-                          Offset="0.5"/>
-            <!-- Transition to Dark Grey -->
-            <GradientStop Color="#000000"
-                          Offset="1.0"/>
-            <!-- Black at the Bottom -->
-        </LinearGradientBrush>
-    </Shell.FlyoutBackground>
     <Shell.ItemTemplate>
         <DataTemplate x:DataType="FlyoutItem">
+            <VerticalStackLayout>
+                <Border StrokeShape="RoundRectangle 10,10,10,10"
+                        StrokeThickness="1.5"
+                        HeightRequest="40"
+                        Margin="8">
+                    <Border.Stroke>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="Black"
+                                          Offset="0.1"/>
+                            <GradientStop Color="Red"
+                                          Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Stroke>
+                    <Grid ColumnSpacing="8"
+                          BackgroundColor="white">
 
-            <Grid HeightRequest="50"
-                  Padding="10"
-                  ColumnSpacing="10">
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroupList>
-                        <VisualStateGroup x:Name="CommonStates">
-                            <VisualState x:Name="Normal">
-                                <VisualState.Setters>
-                                    <Setter Property="BackgroundColor"
-                                            Value="#B0B0B0"/>
-                                </VisualState.Setters>
-                            </VisualState>
 
-                            <VisualState x:Name="Selected">
-                                <VisualState.Setters>
-                                    <Setter Property="BackgroundColor"
-                                            Value="white"/>
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateGroupList>
-                </VisualStateManager.VisualStateGroups>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding FlyoutIcon}"
+                               Margin="12,0,12,0"
+                               HeightRequest="60"
+                               WidthRequest="60"/>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+                        <Label Grid.Column="1"
+                               Text="{Binding Title}"
+                               FontFamily="Medium"
+                               FontSize="15"
+                               VerticalTextAlignment="Center"/>
+                    </Grid>
+                </Border>
 
-                <Image Source="{Binding FlyoutIcon}"
-                       Margin="12,0,12,0"
-                       HeightRequest="60"
-                       WidthRequest="60"/>
+                <!-- Separator Line -->
+                <BoxView HeightRequest="1"
+                         Color="#E0E0E0"
+                         HorizontalOptions="Fill"
+                         Margin="20,0"/>
 
-                <Label Grid.Column="1"
-                       Text="{Binding Title}"
-                       FontFamily="Medium"
-                       FontSize="15"
-                       VerticalTextAlignment="Center"/>
-
-            </Grid>
+            </VerticalStackLayout>
 
         </DataTemplate>
     </Shell.ItemTemplate>
 
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <Grid HeightRequest="200">
-                <Border Margin="10"
-                        StrokeShape="RoundRectangle 20,20,20,20"
-                        BackgroundColor="Transparent"
-                        Stroke="Transparent">
-                    <Image Source="risk_icon_name.png"
-                           HeightRequest="50"/>
-                </Border>
+            <Grid BackgroundColor="White"
+                  HeightRequest="200"
+                  Padding="3">
+
+
+                <Image Source="risk_icon_name.png"
+                       HeightRequest="50"
+                       Opacity="0.7"/>
+
 
             </Grid>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
 
-    <FlyoutItem Title="Calculator"
+    <FlyoutItem Title="Lot Size"
                 Icon="risk_calculator.png">
         <Tab>
             <ShellContent ContentTemplate="{DataTemplate pages:CalculatorPage}"/>
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Calculator"
+
+    <FlyoutItem Title="Risk Management"
                 Icon="risk_calculator.png">
         <Tab>
             <ShellContent ContentTemplate="{DataTemplate views:CalculatorView}"/>
         </Tab>
     </FlyoutItem>
-
-    <FlyoutItem Title="Info"
+    <FlyoutItem Title="About"
                 Icon="risk_info.png">
         <Tab>
             <ShellContent ContentTemplate="{DataTemplate pages:InfoPage}"/>
