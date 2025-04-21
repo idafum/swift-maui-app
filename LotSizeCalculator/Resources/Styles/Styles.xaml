@@ -57,41 +57,7 @@
 
         </Style>
 
-        <!--Style for Calculation Entry-->
-        <Style TargetType="Entry"
-               x:Key="EntryField">
 
-                <Setter Property="VisualStateManager.VisualStateGroups">
-                        <VisualStateGroupList>
-                                <VisualStateGroup Name="CommonStates">
-                                        <VisualState Name="Normal">
-                                                <VisualState.Setters>
-                                                        <Setter Property="BackgroundColor"
-                                                                Value="#dddddd"/>
-                                                </VisualState.Setters>
-                                        </VisualState>
-                                        <VisualState Name="Focused">
-                                                <VisualState.Setters>
-                                                        <Setter Property="BackgroundColor"
-                                                                Value="White"/>
-                                                </VisualState.Setters>
-                                        </VisualState>
-                                </VisualStateGroup>
-                        </VisualStateGroupList>
-                </Setter>
-
-                <Setter Property="ClearButtonVisibility"
-                        Value="WhileEditing"/>
-
-                <Setter Property="PlaceholderColor"
-                        Value="#bbbbbb"/>
-
-                <Setter Property="Keyboard"
-                        Value="Numeric"/>
-
-                <Setter Property="FontFamily"
-                        Value="Medium"/>
-        </Style>
 
         <Style TargetType="BoxView">
                 <Setter Property="BackgroundColor"
@@ -245,6 +211,45 @@
                 </Setter>
         </Style>
 
+        <!--Style for Calculation Entry-->
+        <Style TargetType="Entry"
+               x:Key="EntryField">
+
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                        <VisualStateGroupList>
+                                <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal">
+                                                <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor"
+                                                                Value="#dddddd"/>
+                                                </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState Name="Focused">
+                                                <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor"
+                                                                Value="White"/>
+                                                </VisualState.Setters>
+                                        </VisualState>
+                                </VisualStateGroup>
+                        </VisualStateGroupList>
+                </Setter>
+
+                <Setter Property="ClearButtonVisibility"
+                        Value="WhileEditing"/>
+
+                <Setter Property="PlaceholderColor"
+                        Value="#bbbbbb"/>
+
+                <Setter Property="Keyboard"
+                        Value="Numeric"/>
+
+                <Setter Property="FontFamily"
+                        Value="Medium"/>
+
+                <Setter Property="TextColor"
+                        Value="{AppThemeBinding Light=Black,Dark=Black}"/>
+        </Style>
+
         <Style TargetType="Frame">
                 <Setter Property="HasShadow"
                         Value="False"/>
@@ -329,15 +334,35 @@
         </Style>
 
         <Style TargetType="Label"
-               x:Key="SubHeadline">
+               x:Key="EntryTitle">
                 <Setter Property="TextColor"
-                        Value="Black"/>
+                        Value="{AppThemeBinding Light=Black,Dark=Black}"/>
                 <Setter Property="FontSize"
                         Value="15"/>
                 <Setter Property="FontFamily"
-                        Value="Bold"/>
-
+                        Value="Regular"/>
         </Style>
+
+        <Style TargetType="Label"
+               x:Key="EntryTitle2">
+                <Setter Property="TextColor"
+                        Value="{AppThemeBinding Light=white,Dark=white}"/>
+                <Setter Property="FontSize"
+                        Value="15"/>
+                <Setter Property="FontFamily"
+                        Value="Medium"/>
+        </Style>
+
+        <Style TargetType="Label"
+               x:Key="PageHeader">
+                <Setter Property="TextColor"
+                        Value="{AppThemeBinding Light=Black,Dark=Black}"/>
+                <Setter Property="FontSize"
+                        Value="18"/>
+                <Setter Property="FontFamily"
+                        Value="Medium"/>
+        </Style>
+
 
         <Style TargetType="ListView">
                 <Setter Property="SeparatorColor"
