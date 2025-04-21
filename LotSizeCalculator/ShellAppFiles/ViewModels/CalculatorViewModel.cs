@@ -40,6 +40,35 @@ partial class CalculatorViewModel : ObservableObject
     [ObservableProperty]
     public TradeAction selectedAction;
 
+    [ObservableProperty]
+    Brush tradeStroke;
+
+    partial void OnSelectedActionChanged(TradeAction value)
+    {
+        //Change stroke based on selected Action
+        TradeStroke = value switch
+        {
+            TradeAction.Buy => new LinearGradientBrush
+            {
+                EndPoint = new Point(0, 1),
+                GradientStops = new GradientStopCollection
+                {
+                    new GradientStop(Colors.Black, 0.1f),
+                    new GradientStop(Colors.Green, 1.0f)
+                }
+            },
+            TradeAction.Sell => new LinearGradientBrush
+            {
+                EndPoint = new Point(0, 1),
+                GradientStops = new GradientStopCollection
+                {
+                    new GradientStop(Colors.Black, 0.1f),
+                    new GradientStop(Colors.Red, 1.0f)
+                }
+            },
+            _ => new SolidColorBrush(Colors.Gray)
+        };
+    }
 
     public CalculatorViewModel()
     {
@@ -58,6 +87,15 @@ partial class CalculatorViewModel : ObservableObject
         Pairs.Add("NZDUSD");
 
         SelectedCurrency = new();
+        TradeStroke = new LinearGradientBrush
+        {
+            EndPoint = new Point(0, 1),
+            GradientStops = new GradientStopCollection
+        {
+            new GradientStop(Colors.Black, 0.1f),
+            new GradientStop(Colors.Green, 1.0f)
+        }
+        };
     }
 
     /// <summary>
