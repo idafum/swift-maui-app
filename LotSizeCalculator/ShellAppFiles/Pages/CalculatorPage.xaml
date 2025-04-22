@@ -25,7 +25,7 @@
         <Border Grid.Row="1"
                 Background="Transparent"
                 StrokeShape="RoundRectangle 10,10,10,10"
-                StrokeThickness="2"
+                StrokeThickness="2.5"
                 x:Name="TradeBorder"
                 Stroke="{Binding TradeStroke}">
 
@@ -190,7 +190,7 @@
 
         <Border Grid.Row="3"
                 Stroke="Transparent">
-            <Border StrokeThickness="2"
+            <Border StrokeThickness="2.5"
                     StrokeShape="RoundRectangle 12"
                     Margin="10"
                     HeightRequest="50"
