@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
-using LotSizeCalculator.Popups;
-using LotSizeCalculator.ViewModels;
-using LotSizeCalculator.Views;
+
+using LotSizeCalculator.ShellAppFiles.Popups;
+using LotSizeCalculator.ShellAppFiles.ViewModels;
+using LotSizeCalculator.ShellAppFiles.Pages;
 
 namespace LotSizeCalculator;
 public static class MauiProgram
@@ -38,10 +39,9 @@ public static class MauiProgram
 			.UseMauiCommunityToolkit();
 
 		//Register the popup and view model with the builder
-		mauiAppBuilder.Services.AddTransientPopup<LotsResultPopup, LotsResultPopupViewModel>();
-		mauiAppBuilder.Services.AddSingleton<CalculatorViewModel>();
-		mauiAppBuilder.Services.AddSingleton<CalculatorView>();
-
+		mauiAppBuilder.Services.AddTransientPopup<LotSizeResultPopup, LotSizePopupViewModel>();
+		mauiAppBuilder.Services.AddTransient<CalculatorViewModel>();
+		mauiAppBuilder.Services.AddSingleton<CalculatorPage>();
 #if DEBUG
 		mauiAppBuilder.Logging.AddDebug();
 #endif

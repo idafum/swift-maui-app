@@ -6,12 +6,12 @@ using LotSizeCalculator.ShellAppFiles.ViewModels;
 
 namespace LotSizeCalculator.ShellAppFiles.Pages;
 
-partial class CalculatorPage : ContentPage
+public partial class CalculatorPage : ContentPage
 {
-    public CalculatorPage()
+    public CalculatorPage(CalculatorViewModel calculatorViewModel)
     {
         InitializeComponent();
-        BindingContext = new CalculatorViewModel();
+        BindingContext = calculatorViewModel;
 
         //Default Currency selected always USD
         currencyPicker.SelectedIndex = 0;

@@ -200,7 +200,8 @@
                 <Button Text="Calculate"
                         BorderColor="Transparent"
                         BackgroundColor="Black"
-                        TextColor="white"/>
+                        TextColor="white"
+                        Command="{Binding CalculateCommand}"/>
             </Border>
 
         </Border>

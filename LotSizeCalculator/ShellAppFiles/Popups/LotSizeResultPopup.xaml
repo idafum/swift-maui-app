@@ -1,0 +1,17 @@
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Class="LotSizeCalculator.ShellAppFiles.Popups.LotSizeResultPopup"
+    xmlns:viewModels="clr-namespace:LotSizeCalculator.ShellAppFiles.ViewModels"
+    x:DataType="viewModels:LotSizePopupViewModel">
+
+    <Grid RowDefinitions="*,*">
+        <Label Grid.Row="0"
+               Text="{Binding LotSize}"
+               FontSize="30"/>
+
+        <Label Grid.Row="1"
+               Text="Remember to Risk2"/>
+    </Grid>
+</toolkit:Popup>
