@@ -7,13 +7,14 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
+using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LotSizeCalculator.ShellAppFiles.Models;
 
 namespace LotSizeCalculator.ShellAppFiles.ViewModels;
 
-partial class CalculatorViewModel : ObservableObject
+public partial class CalculatorViewModel : ObservableObject
 {
     public ObservableCollection<Currency> Currencies { get; set; } = [];
 
@@ -43,6 +44,7 @@ partial class CalculatorViewModel : ObservableObject
     [ObservableProperty]
     Brush tradeStroke;
 
+    private readonly IPopupService popupService;
     partial void OnSelectedActionChanged(TradeAction value)
     {
         //Change stroke based on selected Action
@@ -70,7 +72,7 @@ partial class CalculatorViewModel : ObservableObject
         };
     }
 
-    public CalculatorViewModel()
+    public CalculatorViewModel(IPopupService popupService)
     {
         //Setup Currencies
         Currencies.Add(new Currency { Code = "USD", Flag = "usd.png" });
@@ -96,6 +98,8 @@ partial class CalculatorViewModel : ObservableObject
             new GradientStop(Colors.Green, 1.0f)
         }
         };
+
+        this.popupService = popupService;
     }
 
     /// <summary>
@@ -136,5 +140,29 @@ partial class CalculatorViewModel : ObservableObject
             Debug.WriteLine("Error parsing account balance");
         }
 
+    }
+
+    [RelayCommand]
+    private void Calculate()
+    {
+        //For now this just opens the popup for testing
+        this.popupService.ShowPopup<LotSizePopupViewModel>();
+    }
+
+    /// <summary>
+    /// LotSizeCalculator
+    /// 
+    /// Calculates the LotSize based on User Input
+    /// </summary>
+    /// <param name="accountBalance">User Entered account balance</param>
+    /// <param name="risk">User Entered Risk </param>
+    /// <param name="stoploss">User Entered Stoploss</param>
+    /// <param name="pipValue">Optional paramter</param>
+    /// <returns>LotSize rounded to at most 2 decimal places</returns>
+    private double LotSizeCalculator(double accountBalance, double risk, double stoploss, double pipValue = 10)
+    {
+        double riskAmount = accountBalance * (risk / 100);
+        double lotSize = riskAmount / (pipValue * stoploss);
+        return Math.Round(lotSize, 2); //Round to 
     }
 }
