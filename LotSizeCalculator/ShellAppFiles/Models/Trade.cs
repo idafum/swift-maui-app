@@ -14,5 +14,13 @@ public class Trade
     public double StopLoss { get; set; }
     public string Pair { get; set; }
     public TradeAction Action { get; set; }
-    public Trade() { }
+    public Trade(Currency currency, double accountBalance, double risk, double stopLoss, string pair, TradeAction action)
+    {
+        Currency = currency;
+        AccountBalance = accountBalance;
+        Risk = risk;
+        StopLoss = stopLoss;
+        Pair = pair;
+        Action = action;
+    }
 }
