@@ -15,9 +15,12 @@ partial class FlashCardPage : ContentPage
 
     void OnStartClicked(object sender, EventArgs args)
     {
-        //Navigate to the app shell
-        Application.Current.Windows[0].Page = new AppShell();
+        if (Application.Current != null)
+        {
+            //Navigate to the app shell
+            Application.Current.Windows[0].Page = new AppShell();
 
-        Preferences.Set("HasSeenIntro", true);
+            Preferences.Set("HasSeenIntro", true);
+        }
     }
 }
